@@ -12,6 +12,10 @@
         "source": "com.example.bookshelf.app-main-38:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.bookshelf.app-debug-36:/drawable_ic_book_placeholder.xml.flat",
+        "source": "com.example.bookshelf.app-main-38:/drawable/ic_book_placeholder.xml"
+    },
+    {
         "merged": "com.example.bookshelf.app-debug-36:/mipmap-hdpi_ic_launcher.webp.flat",
         "source": "com.example.bookshelf.app-main-38:/mipmap-hdpi/ic_launcher.webp"
     },
@@ -76,12 +80,12 @@
         "source": "com.example.bookshelf.app-main-38:/layout/activity_search_results.xml"
     },
     {
-        "merged": "com.example.bookshelf.app-debug-36:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.bookshelf.app-main-38:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
         "merged": "com.example.bookshelf.app-debug-36:/mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.bookshelf.app-main-38:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bookshelf.app-debug-36:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.bookshelf.app-main-38:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
         "merged": "com.example.bookshelf.app-debug-36:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

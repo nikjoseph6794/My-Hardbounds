@@ -5,6 +5,7 @@ color splash_background
 drawable bg_tag_round
 drawable bookshelf_logo
 drawable bookshelf_logo_splash123
+drawable ic_book_placeholder
 id addBtn
 id addToWishlistBtn
 id addWishlistBtn

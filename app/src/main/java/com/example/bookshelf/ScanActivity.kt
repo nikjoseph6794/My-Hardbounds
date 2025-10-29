@@ -163,24 +163,46 @@ class ScanActivity : AppCompatActivity() {
                 val resp = withContext(Dispatchers.IO) {
                     RetrofitClient.api.searchByIsbn("isbn:$isbn")
                 }
-                val info = resp.items?.firstOrNull()?.volumeInfo
 
+                // ✅ No results from API → show message, only allow scanning again
+                if (resp.items.isNullOrEmpty()) {
+                    currentTitle = null
+                    currentAuthors = null
+                    currentDesc = null
+                    currentCoverUrl = null
+
+                    b.titleText.text = "—"
+                    b.authorText.text = "—"
+                    b.descText.text = "—"
+
+                    b.saveStatus.text = "No book found for the scan"
+                    b.addBtn.isEnabled = false
+                    b.addWishlistBtn.visibility = View.GONE
+                    // keep Scan Again visible; nothing else to do
+                    return@launch
+                }
+
+                val info = resp.items.firstOrNull()?.volumeInfo
                 val title = info?.title ?: ""
                 val authors = info?.authors?.joinToString().orEmpty()
                 val description = info?.description.orEmpty()
 
-                // get best cover image
-                currentCoverUrl = preferHttps(info?.imageLinks?.thumbnail)
+                // Best cover pick (may be empty if API has none)
+                val cover = preferHttps(info?.imageLinks?.thumbnail)
                     .ifBlank { preferHttps(info?.imageLinks?.smallThumbnail) }
+                currentCoverUrl = cover
 
+                // cache
                 currentTitle = title
                 currentAuthors = authors
                 currentDesc = description
 
+                // show UI info
                 b.titleText.text = title.ifBlank { "—" }
                 b.authorText.text = authors.ifBlank { "—" }
                 b.descText.text = description.ifBlank { "—" }
 
+                // DB Check
                 val inLibrary = withContext(Dispatchers.IO) { dao.findByIsbn(isbn) != null }
                 val inWishlist = withContext(Dispatchers.IO) { wishlistDao.findByIsbn(isbn) != null }
 
@@ -206,11 +228,13 @@ class ScanActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 b.saveStatus.text = "Error: ${e.message ?: "Unknown error"}"
                 b.addBtn.isEnabled = false
+                b.addWishlistBtn.visibility = View.GONE
             } finally {
                 b.progress.visibility = View.GONE
             }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

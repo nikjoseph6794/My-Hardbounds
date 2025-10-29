@@ -33,6 +33,8 @@ class WishlistAdapter(
             b.title.text = item.title.ifBlank { "—" }
             b.authors.text = item.authors.ifBlank { "—" }
             b.isbn.text = "ISBN: ${item.isbn}"
+
+
         }
     }
 
