@@ -110,7 +110,7 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.grad
 	android:supportsRtl
 		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:13:9-38
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:13:9-37
 	android:roundIcon
 		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:11:9-54
 	android:icon
