@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="true"
+        android:label="My Hardbounds"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+        <activity android:name=".SearchResultsActivity" android:exported="false" />
+        <activity android:name=".BookDetailActivity" android:exported="false" />
+        <activity android:name=".WishlistActivity" android:exported="false" />
+
+        <activity android:name=".ScanActivity"
+            android:exported="false" />
+        <activity android:name=".LibraryActivity" android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyHardbounds.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+</manifest>

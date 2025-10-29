@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MAIN APP THEME -->
+    <style name="Theme.MyHardbounds" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <!-- MINIMAL SPLASH THEME -->
+    <style name="Theme.MyHardbounds.Splash" parent="Theme.SplashScreen">
+        <!-- Solid background -->
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <!-- Just use launcher icon (adaptive); no custom drawables -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <!-- After splash, switch to your real app theme -->
+        <item name="postSplashScreenTheme">@style/Theme.MyHardbounds</item>
+    </style>
+
+</resources>

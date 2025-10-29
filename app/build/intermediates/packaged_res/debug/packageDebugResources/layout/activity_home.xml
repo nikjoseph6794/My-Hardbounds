@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:background="?android:attr/windowBackground"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="56dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- App logo -->
+        <!-- App logo -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:src="@drawable/bookshelf_logo"
+            android:contentDescription="App logo"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Main title -->
+        <TextView
+            android:id="@+id/appTitle"
+            android:text="My Hardbounds"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Sub-text -->
+        <TextView
+            android:id="@+id/appSubtitle"
+            android:text="Personal Library"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:textAlignment="center"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/scanBtn"
+            android:text="📘  Scan a Book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <Button
+            android:id="@+id/libraryBtn"
+            android:text="📚  My Library"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <Button
+            android:id="@+id/wishlistBtn"
+            android:text="📝  Wishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
+
+    </LinearLayout>
+</ScrollView>
