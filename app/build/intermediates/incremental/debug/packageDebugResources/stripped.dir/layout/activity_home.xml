@@ -26,7 +26,7 @@
         <!-- Main title -->
         <TextView
             android:id="@+id/appTitle"
-            android:text="My Hardbounds"
+            android:text="My BookShelf"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textAlignment="center"
