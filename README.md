@@ -1,129 +1,155 @@
-📚 My Hardbounds — Personal Library App
+# 📚 My Hardbounds — Personal Library App
 
-My Hardbounds is a personal book library manager for Android devices.
-Scan ISBN barcodes to instantly fetch book details from the Google Books API, and easily organize your Library & Wishlist.
+**My Hardbounds** is a personal Android app to manage your book collection.
+Scan ISBN barcodes, fetch details from Google Books, and organize titles into **Library** and **Wishlist**.
+Keep track of what you’ve read, and what you want next.
 
-Manage what you’ve read, track what’s on the shelf, and never forget a book again! 📖✨
+---
 
-🚀 Features
-Feature Category	Details
-📷 ISBN Scanner	Barcode scanning using ZXing to fetch book details automatically
-🌐 Book Info Fetching	Title, Author, Description, Cover Image from Google Books API
-📚 Personal Library	Add books you own to a local Room DB
-📝 Wishlist	Add books to wishlist while browsing
-🔄 Smart Logic	If a book exists in library: ✅ No duplicate entry
-If moved to library: ✅ Auto-remove from wishlist
-📕 Read Status	Mark books as Read / Unread and track progress
-🗑 Delete Support	Delete from Library or remove from Wishlist
-🔍 Search	Real-time search over title / author
-💾 Local Storage	Works fully offline once books are saved
-🎨 Clean UI	Material Design, padding fixes and responsive layouts
-🎬 Smooth UX	Auto-return to home on scan cancel, live UI updates
-🧩 Architecture & Tech Stack
-Layer	Technology
-App Platform	Android
-Language	Kotlin
-UI Framework	XML + Material Components (Material3)
-Image Loading	Coil
-Local Storage	Room Database
-Networking	Retrofit + Gson
-Barcode Scanning	ZXing
-Asynchronous	Kotlin Coroutines
-Splash Screen	Android SplashScreen API
-🗂 Project Structure
-📁 app/src/main/java/com.example.bookshelf
- ├── ui/               → Adapters & UI helpers
- ├── db/               → Room DAO, Entities, Database
- ├── data/             → Retrofit API Client
- ├── HomeActivity      → Main menu
- ├── ScanActivity      → Barcode scanning + fetch flow
- ├── LibraryActivity   → List of owned books
- ├── WishlistActivity  → Books to buy/read later
- └── BookDetailActivity → Detailed info & actions
+## ✨ Features
 
-🔌 External API
+- 📷 **ISBN barcode scan** using ZXing camera scanner
+- 🌐 Fetches:
+  - Title, Author(s), Description
+  - Cover image (Coil with HTTPS fix)
+- 📚 **Library** (Room DB)
+- 📝 **Wishlist** (separate Room table)
+- 🔁 Smart behavior:
+  - Already in Library → “Already in library”
+  - Already in Wishlist → “Already in wishlist”
+  - Adding to Library removes it from Wishlist automatically
+- 🔍 **Real-time search** (title or author)
+- ✅ **Read/Unread** status toggle
+- 🗑 Delete from Library / Remove from Wishlist (long-press)
+- 💾 **Backup & Restore** library to JSON
+- 🧭 Polished UX:
+  - Cancel scan → return to home
+  - Debounce search
+  - Keyboard hides on scroll
 
-Google Books API
+---
 
-Endpoint Format:
+## 🧩 Tech Stack
 
-GET https://www.googleapis.com/books/v1/volumes?q=isbn:{ISBN}
+| Category | Technology |
+|---------|------------|
+| Language | Kotlin |
+| Architecture | Room + View-binding |
+| Networking | Retrofit + Moshi/Gson |
+| Camera & Barcode | ZXing `IntentIntegrator` |
+| Local Persistence | Room with migrations |
+| UI Framework | XML + Material 3 components |
+| Image Loading | Coil |
+| Concurrency | Kotlin Coroutines + Flows |
+| Splash Screen | AndroidX SplashScreen API |
+
+---
 
 
-Data used:
+---
 
-title
+## 🌐 API Used
 
-authors
+- **Google Books REST API**
+- GET https://www.googleapis.com/books/v1/volumes?q=isbn:{ISBN}
 
-description
+Uses:
+- `volumeInfo.title`
+- `volumeInfo.authors[]`
+- `volumeInfo.description`
+- `volumeInfo.imageLinks.thumbnail` / `smallThumbnail`
 
-imageLinks.thumbnail
+---
 
-(Expandable for more metadata)
+## 🪵 Database Schema
 
-🧠 Business Rules & Logic
-Scenario	Action
-Scanning an ISBN already in Library	Show Already in library, disable add buttons
-Scanning an ISBN already in Wishlist	Show Already in wishlist, only allow Add to Library
-Adding a book to Library that is in Wishlist	✅ Auto-removes from Wishlist
-Removing a book from Library	Remains removed unless re-scanned
-Long-press Wishlist item	Option to Remove from Wishlist
+### Table: `books`
+| Column | Notes |
+|--------|------|
+| isbn (PK) | Primary key |
+| title | String |
+| authors | Comma-separated |
+| description | String |
+| coverUrl | HTTPS thumbnail |
+| isRead | Boolean |
+| addedAt | Epoch millis |
 
-Consistent database rules ensure no duplicates and clean cataloging ✅
+### Table: `wishlist`
+| Column | Notes |
+|--------|------|
+| isbn (PK) | Primary key |
+| title | String |
+| authors | String |
+| description | String |
+| coverUrl | String |
+| addedAt | Epoch millis |
 
-🛠 Build Instructions
+✅ Migration history included (`1→2`: isRead, `2→3`: coverUrl, `3→4`: wishlist)
 
-Requirements
+---
 
-Android Studio Flamingo or newer
+## ▶️ Running the App
 
-Min SDK: Android 6.0 (API 23) recommended
+**Requirements**
+- Android Studio Flamingo or higher
+- Min SDK: 23+
+- Real device recommended (scanner works better)
 
-Internet connection required for fetching metadata
+**Steps**
+1. Open project in Android Studio
+2. Sync Gradle
+3. Run on device
+4. Grant camera + internet permissions
 
-To Run
+---
 
-Clone project or unzip provided archive
+## 🧪 Key Screens
 
-Open in Android Studio
+- **Home Page** → Library / Scan / Wishlist
+- **Scanner Page** → live barcode reading
+- **Book Details** → cover + metadata + actions
+- **Library** → saved books + search
+- **Wishlist** → long-press to remove
+- **Backup/Restore** → JSON import/export
 
-Sync Gradle dependencies
+---
 
-Connect real device (camera required)
+## 🛠 Troubleshooting
 
-Run ▶
+| Issue | Solution |
+|------|----------|
+| Scanner closes with no result | Use real device + grant camera |
+| Covers not loading | Check internet / HTTPS conversion |
+| Migration crash | Uninstall app during dev |
+| Splash icon cropped | Re-generate launcher icons with padding |
 
-⚠️ Emulator cameras often fail with barcode scanning.
-Use a real device for best results ✅
+---
 
-✅ Future Enhancements (Planned)
+## 🔮 Future Enhancements
 
-🔦 Flash toggle while scanning
+- 📊 Stats (books read per year)
+- ⭐ Ratings & personal notes
+- 🏷 Genre filtering / tags
+- 🔦 Flash toggle in scanner
+- ☁️ Cloud backup (Google Drive)
+- 🖼 Thumbnails in library lists
+- 📤 Export CSV/PDF
 
-📊 Statistics dashboard (books read per year)
+---
 
-⭐ Ratings & notes for each book
+## 👤 Developer
 
-📁 Export / Backup library to cloud
+- **App Developer:** Nikhil Joseph  
+- **AI-assisted Documentation:** ChatGPT
 
-🎭 Theming + Dark Mode refinements
+---
 
-📖 Book categories & genre filtering
+## 📜 License
 
-🖼 Cover thumbnails in library lists (coming soon!)
+Personal and learning use only.  
+You may modify with attribution.
 
-🧑‍💻 Developer
+---
 
-Developer: Nikhil Joseph
 
-📌 License
 
-This is a personal learning project —
-You may modify and reuse for personal purposes ✅
-Please provide attribution if shared publicly.
-
-✨ Final Note
-
-Books are your hardbounds of imagination.
-This app helps you celebrate every one of them. 📚💙
