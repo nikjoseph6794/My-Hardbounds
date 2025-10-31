@@ -16,6 +16,10 @@
         "source": "com.example.bookshelf.app-main-38:/layout/activity_wishlist.xml"
     },
     {
+        "merged": "com.example.bookshelf.app-mergeDebugResources-35:/layout/activity_add_manual.xml",
+        "source": "com.example.bookshelf.app-main-38:/layout/activity_add_manual.xml"
+    },
+    {
         "merged": "com.example.bookshelf.app-mergeDebugResources-35:/layout/activity_home.xml",
         "source": "com.example.bookshelf.app-main-38:/layout/activity_home.xml"
     },

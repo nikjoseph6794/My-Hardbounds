@@ -72,7 +72,7 @@
 42-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
 43
 44    <application
-44-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-34:19
+44-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-36:19
 45        android:allowBackup="true"
 45-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:12:9-35
 46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -108,126 +108,132 @@
 62            android:exported="false" />
 62-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:52-76
 63        <activity
-63-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:20:9-21:40
-64            android:name="com.example.bookshelf.ScanActivity"
-64-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:20:19-47
+63-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:9-80
+64            android:name="com.example.bookshelf.AddManualActivity"
+64-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:19-52
 65            android:exported="false" />
-65-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:21:13-37
+65-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:53-77
 66        <activity
-66-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-78
-67            android:name="com.example.bookshelf.LibraryActivity"
-67-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-50
+66-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-23:40
+67            android:name="com.example.bookshelf.ScanActivity"
+67-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-47
 68            android:exported="false" />
-68-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:51-75
+68-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:13-37
 69        <activity
-69-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:9-31:20
-70            android:name="com.example.bookshelf.HomeActivity"
-70-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:13-41
-71            android:exported="true"
-71-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:13-36
-72            android:theme="@style/Theme.MyHardbounds.Splash" >
-72-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-61
-73            <intent-filter>
-73-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-30:29
-74                <action android:name="android.intent.action.MAIN" />
-74-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:17-69
-74-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:25-66
-75
-76                <category android:name="android.intent.category.LAUNCHER" />
-76-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:17-77
-76-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:27-74
-77            </intent-filter>
-78        </activity>
-79
-80        <provider
-80-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
-81            android:name="androidx.startup.InitializationProvider"
-81-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
-82            android:authorities="com.example.bookshelf.androidx-startup"
-82-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
-83            android:exported="false" >
-83-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
-84            <meta-data
-84-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
-85                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-85-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
-86                android:value="androidx.startup" />
-86-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+69-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:9-78
+70            android:name="com.example.bookshelf.LibraryActivity"
+70-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:19-50
+71            android:exported="false" />
+71-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:51-75
+72        <activity
+72-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:9-33:20
+73            android:name="com.example.bookshelf.HomeActivity"
+73-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-41
+74            android:exported="true"
+74-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-36
+75            android:theme="@style/Theme.MyHardbounds.Splash" >
+75-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:13-61
+76            <intent-filter>
+76-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:13-32:29
+77                <action android:name="android.intent.action.MAIN" />
+77-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:17-69
+77-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:25-66
+78
+79                <category android:name="android.intent.category.LAUNCHER" />
+79-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:17-77
+79-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:27-74
+80            </intent-filter>
+81        </activity>
+82
+83        <provider
+83-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+84            android:name="androidx.startup.InitializationProvider"
+84-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+85            android:authorities="com.example.bookshelf.androidx-startup"
+85-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+86            android:exported="false" >
+86-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
 87            <meta-data
-87-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
-88                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-88-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+87-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+88                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+88-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
 89                android:value="androidx.startup" />
-89-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+89-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
 90            <meta-data
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
-91                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+90-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+91-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
 92                android:value="androidx.startup" />
-92-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
-93        </provider>
-94
-95        <service
-95-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:24:9-28:63
-96            android:name="androidx.room.MultiInstanceInvalidationService"
-96-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:25:13-74
-97            android:directBootAware="true"
-97-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:26:13-43
-98            android:exported="false" />
-98-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:27:13-37
-99
-100        <receiver
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
-101            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
-102            android:directBootAware="false"
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
-103            android:enabled="true"
-103-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
-104            android:exported="true"
-104-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
-105            android:permission="android.permission.DUMP" >
-105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
-106            <intent-filter>
-106-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
-107                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
-108            </intent-filter>
+92-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+93            <meta-data
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+95                android:value="androidx.startup" />
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+96        </provider>
+97
+98        <service
+98-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:24:9-28:63
+99            android:name="androidx.room.MultiInstanceInvalidationService"
+99-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:25:13-74
+100            android:directBootAware="true"
+100-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:26:13-43
+101            android:exported="false" />
+101-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:27:13-37
+102
+103        <receiver
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+104            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+105            android:directBootAware="false"
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+106            android:enabled="true"
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+107            android:exported="true"
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+108            android:permission="android.permission.DUMP" >
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
 109            <intent-filter>
-109-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
-110                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+110                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
 111            </intent-filter>
 112            <intent-filter>
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
-113                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+113                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
 114            </intent-filter>
 115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
-116                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+116                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
 117            </intent-filter>
-118        </receiver>
-119
-120        <activity
-120-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
-121            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-121-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
-122            android:clearTaskOnLaunch="true"
-122-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
-123            android:screenOrientation="sensorLandscape"
-123-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
-124            android:stateNotNeeded="true"
-124-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
-125            android:theme="@style/zxing_CaptureTheme"
-125-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
-126            android:windowSoftInputMode="stateAlwaysHidden" />
-126-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
-127    </application>
-128
-129</manifest>
+118            <intent-filter>
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+119                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+120            </intent-filter>
+121        </receiver>
+122
+123        <activity
+123-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+124            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+124-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+125            android:clearTaskOnLaunch="true"
+125-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+126            android:screenOrientation="sensorLandscape"
+126-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+127            android:stateNotNeeded="true"
+127-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+128            android:theme="@style/zxing_CaptureTheme"
+128-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+129            android:windowSoftInputMode="stateAlwaysHidden" />
+129-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+130    </application>
+131
+132</manifest>

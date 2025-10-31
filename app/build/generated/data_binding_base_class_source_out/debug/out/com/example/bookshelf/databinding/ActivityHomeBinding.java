@@ -22,6 +22,9 @@ public final class ActivityHomeBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final Button addManualBtn;
+
+  @NonNull
   public final TextView appSubtitle;
 
   @NonNull
@@ -39,10 +42,11 @@ public final class ActivityHomeBinding implements ViewBinding {
   @NonNull
   public final Button wishlistBtn;
 
-  private ActivityHomeBinding(@NonNull ScrollView rootView, @NonNull TextView appSubtitle,
-      @NonNull TextView appTitle, @NonNull Button libraryBtn, @NonNull ImageView logoImage,
-      @NonNull Button scanBtn, @NonNull Button wishlistBtn) {
+  private ActivityHomeBinding(@NonNull ScrollView rootView, @NonNull Button addManualBtn,
+      @NonNull TextView appSubtitle, @NonNull TextView appTitle, @NonNull Button libraryBtn,
+      @NonNull ImageView logoImage, @NonNull Button scanBtn, @NonNull Button wishlistBtn) {
     this.rootView = rootView;
+    this.addManualBtn = addManualBtn;
     this.appSubtitle = appSubtitle;
     this.appTitle = appTitle;
     this.libraryBtn = libraryBtn;
@@ -78,6 +82,12 @@ public final class ActivityHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.addManualBtn;
+      Button addManualBtn = ViewBindings.findChildViewById(rootView, id);
+      if (addManualBtn == null) {
+        break missingId;
+      }
+
       id = R.id.appSubtitle;
       TextView appSubtitle = ViewBindings.findChildViewById(rootView, id);
       if (appSubtitle == null) {
@@ -114,8 +124,8 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHomeBinding((ScrollView) rootView, appSubtitle, appTitle, libraryBtn,
-          logoImage, scanBtn, wishlistBtn);
+      return new ActivityHomeBinding((ScrollView) rootView, addManualBtn, appSubtitle, appTitle,
+          libraryBtn, logoImage, scanBtn, wishlistBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

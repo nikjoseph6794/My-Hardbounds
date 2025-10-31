@@ -160,69 +160,112 @@ class ScanActivity : AppCompatActivity() {
 
         uiScope.launch {
             try {
-                val resp = withContext(Dispatchers.IO) {
+                // 1) Try Google Books
+                val gb = withContext(Dispatchers.IO) {
                     RetrofitClient.api.searchByIsbn("isbn:$isbn")
                 }
 
-                // ✅ No results from API → show message, only allow scanning again
-                if (resp.items.isNullOrEmpty()) {
-                    currentTitle = null
-                    currentAuthors = null
-                    currentDesc = null
-                    currentCoverUrl = null
+                // Helper to run the common DB checks + button state
+                suspend fun applyDbState(title: String) {
+                    val inLibrary = withContext(Dispatchers.IO) { dao.findByIsbn(isbn) != null }
+                    val inWishlist = withContext(Dispatchers.IO) { wishlistDao.findByIsbn(isbn) != null }
 
-                    b.titleText.text = "—"
-                    b.authorText.text = "—"
-                    b.descText.text = "—"
-
-                    b.saveStatus.text = "No book found for the scan"
-                    b.addBtn.isEnabled = false
-                    b.addWishlistBtn.visibility = View.GONE
-                    // keep Scan Again visible; nothing else to do
-                    return@launch
+                    when {
+                        inLibrary -> {
+                            b.saveStatus.text = "Already in your library"
+                            b.addBtn.isEnabled = false
+                            b.addWishlistBtn.visibility = View.GONE
+                        }
+                        inWishlist -> {
+                            b.saveStatus.text = "Already in wishlist"
+                            b.addBtn.isEnabled = title.isNotBlank()
+                            b.addWishlistBtn.visibility = View.GONE
+                        }
+                        else -> {
+                            b.saveStatus.text = ""
+                            val canAdd = title.isNotBlank()
+                            b.addBtn.isEnabled = canAdd
+                            b.addWishlistBtn.visibility = if (canAdd) View.VISIBLE else View.GONE
+                            b.addWishlistBtn.isEnabled = canAdd
+                        }
+                    }
                 }
 
-                val info = resp.items.firstOrNull()?.volumeInfo
-                val title = info?.title ?: ""
-                val authors = info?.authors?.joinToString().orEmpty()
-                val description = info?.description.orEmpty()
+                if (!gb.items.isNullOrEmpty()) {
+                    // 2) Google Books HIT
+                    val info = gb.items.firstOrNull()?.volumeInfo
+                    val title = info?.title ?: ""
+                    val authors = info?.authors?.joinToString().orEmpty()
+                    val description = info?.description.orEmpty()
 
-                // Best cover pick (may be empty if API has none)
-                val cover = preferHttps(info?.imageLinks?.thumbnail)
-                    .ifBlank { preferHttps(info?.imageLinks?.smallThumbnail) }
-                currentCoverUrl = cover
+                    // ✅ Prefer HTTPS for Google Books covers
+                    currentCoverUrl = preferHttps(info?.imageLinks?.thumbnail)
+                        .ifBlank { preferHttps(info?.imageLinks?.smallThumbnail) }
 
-                // cache
-                currentTitle = title
-                currentAuthors = authors
-                currentDesc = description
 
-                // show UI info
-                b.titleText.text = title.ifBlank { "—" }
-                b.authorText.text = authors.ifBlank { "—" }
-                b.descText.text = description.ifBlank { "—" }
+                    // cache
+                    currentTitle = title
+                    currentAuthors = authors
+                    currentDesc = description
 
-                // DB Check
-                val inLibrary = withContext(Dispatchers.IO) { dao.findByIsbn(isbn) != null }
-                val inWishlist = withContext(Dispatchers.IO) { wishlistDao.findByIsbn(isbn) != null }
+                    // UI
+                    b.titleText.text = title.ifBlank { "—" }
+                    b.authorText.text = authors.ifBlank { "—" }
+                    b.descText.text = description.ifBlank { "—" }
 
-                when {
-                    inLibrary -> {
-                        b.saveStatus.text = "Already in your library"
+                    // Buttons state
+                    applyDbState(title)
+                } else {
+                    // 3) Google Books MISS → try Open Library as fallback
+                    val ol = withContext(Dispatchers.IO) {
+                        RetrofitClient.openLibrary.searchByIsbn(isbn)
+                    }
+                    val doc = ol.docs.firstOrNull()
+
+
+                    if (doc == null) {
+                        // 4) Open Library MISS too → show "No book found"
+                        currentTitle = null
+                        currentAuthors = null
+                        currentDesc = null
+                        currentCoverUrl = null
+
+                        b.titleText.text = "—"
+                        b.authorText.text = "—"
+                        b.descText.text = "—"
+
+                        b.saveStatus.text = "No book found for the scan"
                         b.addBtn.isEnabled = false
                         b.addWishlistBtn.visibility = View.GONE
+                        return@launch
                     }
-                    inWishlist -> {
-                        b.saveStatus.text = "Already in wishlist"
-                        b.addBtn.isEnabled = title.isNotBlank()
-                        b.addWishlistBtn.visibility = View.GONE
+
+                    // 5) Map minimal fields from Open Library
+                    val title = doc.title.orEmpty()
+                    val authors = doc.author_name?.joinToString().orEmpty()
+                    val description = "" // OL does not send description here
+
+                   // ✅ Choose an OL cover URL
+                    currentCoverUrl = when {
+                        doc.cover_i != null ->
+                            com.example.bookshelf.util.openLibraryCoverForId(doc.cover_i!!)
+                        else ->
+                            com.example.bookshelf.util.openLibraryCoverForIsbn(isbn)
                     }
-                    else -> {
-                        b.saveStatus.text = ""
-                        b.addBtn.isEnabled = title.isNotBlank()
-                        b.addWishlistBtn.visibility = if (title.isNotBlank()) View.VISIBLE else View.GONE
-                        b.addWishlistBtn.isEnabled = title.isNotBlank()
-                    }
+
+
+                    // cache
+                    currentTitle = title
+                    currentAuthors = authors
+                    currentDesc = description
+
+                    // UI
+                    b.titleText.text = title.ifBlank { "—" }
+                    b.authorText.text = authors.ifBlank { "—" }
+                    b.descText.text = "—"
+
+                    // Buttons state
+                    applyDbState(title)
                 }
 
             } catch (e: Exception) {
@@ -234,6 +277,7 @@ class ScanActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     override fun onDestroy() {

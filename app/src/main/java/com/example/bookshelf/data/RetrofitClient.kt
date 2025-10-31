@@ -17,4 +17,14 @@ object RetrofitClient {
             .build()
             .create(GoogleBooksApi::class.java)
     }
+
+    val openLibrary: OpenLibraryApi by lazy {
+        retrofit2.Retrofit.Builder()
+            .baseUrl("https://openlibrary.org/")
+            .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
+            .build()
+            .create(OpenLibraryApi::class.java)
+    }
+
+
 }

@@ -61,6 +61,9 @@
             android:name="com.example.bookshelf.WishlistActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.bookshelf.AddManualActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.bookshelf.ScanActivity"
             android:exported="false" />
         <activity
