@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -26,7 +27,13 @@ public final class ActivityLibraryBinding implements ViewBinding {
   public final Button backupBtn;
 
   @NonNull
+  public final TextView countText;
+
+  @NonNull
   public final TextView emptyHint;
+
+  @NonNull
+  public final LinearLayout headerRow;
 
   @NonNull
   public final TextView libraryHeader;
@@ -35,20 +42,26 @@ public final class ActivityLibraryBinding implements ViewBinding {
   public final RecyclerView libraryList;
 
   @NonNull
+  public final SwitchCompat readToggle;
+
+  @NonNull
   public final Button restoreBtn;
 
   @NonNull
   public final EditText searchInput;
 
   private ActivityLibraryBinding(@NonNull LinearLayout rootView, @NonNull Button backupBtn,
-      @NonNull TextView emptyHint, @NonNull TextView libraryHeader,
-      @NonNull RecyclerView libraryList, @NonNull Button restoreBtn,
-      @NonNull EditText searchInput) {
+      @NonNull TextView countText, @NonNull TextView emptyHint, @NonNull LinearLayout headerRow,
+      @NonNull TextView libraryHeader, @NonNull RecyclerView libraryList,
+      @NonNull SwitchCompat readToggle, @NonNull Button restoreBtn, @NonNull EditText searchInput) {
     this.rootView = rootView;
     this.backupBtn = backupBtn;
+    this.countText = countText;
     this.emptyHint = emptyHint;
+    this.headerRow = headerRow;
     this.libraryHeader = libraryHeader;
     this.libraryList = libraryList;
+    this.readToggle = readToggle;
     this.restoreBtn = restoreBtn;
     this.searchInput = searchInput;
   }
@@ -86,9 +99,21 @@ public final class ActivityLibraryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.countText;
+      TextView countText = ViewBindings.findChildViewById(rootView, id);
+      if (countText == null) {
+        break missingId;
+      }
+
       id = R.id.emptyHint;
       TextView emptyHint = ViewBindings.findChildViewById(rootView, id);
       if (emptyHint == null) {
+        break missingId;
+      }
+
+      id = R.id.headerRow;
+      LinearLayout headerRow = ViewBindings.findChildViewById(rootView, id);
+      if (headerRow == null) {
         break missingId;
       }
 
@@ -104,6 +129,12 @@ public final class ActivityLibraryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.readToggle;
+      SwitchCompat readToggle = ViewBindings.findChildViewById(rootView, id);
+      if (readToggle == null) {
+        break missingId;
+      }
+
       id = R.id.restoreBtn;
       Button restoreBtn = ViewBindings.findChildViewById(rootView, id);
       if (restoreBtn == null) {
@@ -116,8 +147,8 @@ public final class ActivityLibraryBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLibraryBinding((LinearLayout) rootView, backupBtn, emptyHint,
-          libraryHeader, libraryList, restoreBtn, searchInput);
+      return new ActivityLibraryBinding((LinearLayout) rootView, backupBtn, countText, emptyHint,
+          headerRow, libraryHeader, libraryList, readToggle, restoreBtn, searchInput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

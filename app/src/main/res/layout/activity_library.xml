@@ -54,6 +54,41 @@ android:layout_height="wrap_content" />
         android:layout_height="wrap_content"
         android:padding="14dp" />
 
+    <!-- Add this block near the top, before the list -->
+    <LinearLayout
+        android:id="@+id/headerRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp">
+
+        <!-- Counts -->
+        <TextView
+            android:id="@+id/countText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: 0 • Read: 0 • Unread: 0"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingBottom="8dp" />
+
+        <!-- Read / Unread toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/readToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Read"
+                android:padding="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
 android:id="@+id/libraryList"

@@ -3176,6 +3176,7 @@ id contentPanel
 id contiguous
 id coordinator
 id cos
+id countText
 id counterclockwise
 id cover
 id coverImage
@@ -3255,6 +3256,7 @@ id graph_wrap
 id group_divider
 id groups
 id header
+id headerRow
 id header_title
 id hide_ime_id
 id hideable
@@ -3406,6 +3408,7 @@ id radio
 id ratio
 id readStatusTag
 id readTag
+id readToggle
 id rectangles
 id report_drawn
 id restoreBtn
