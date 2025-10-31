@@ -5,31 +5,27 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookshelf.databinding.ActivityLibraryBinding
 import com.example.bookshelf.db.AppDb
+import com.example.bookshelf.db.Book
 import com.example.bookshelf.ui.BookAdapter
 import com.example.bookshelf.utils.BackupHelper
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import androidx.lifecycle.lifecycleScope
+
 
 class LibraryActivity : AppCompatActivity() {
     private lateinit var b: ActivityLibraryBinding
     private val dao by lazy { AppDb.get(this).bookDao() }
 
     private val adapter by lazy {
-        // Tap on a book in the list still opens details
         BookAdapter { book ->
             startActivity(
                 Intent(this, BookDetailActivity::class.java)
@@ -37,6 +33,12 @@ class LibraryActivity : AppCompatActivity() {
             )
         }
     }
+
+    // --- NEW: in-memory state for filtering ---
+    private var latestList: List<Book> = emptyList()
+    private var currentQuery: String = ""
+    private var showRead: Boolean = false  // false = Unread (default), true = Read
+
     // For creating a new backup JSON file
     private val exportLauncher = registerForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
@@ -65,7 +67,6 @@ class LibraryActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityLibraryBinding.inflate(layoutInflater)
@@ -75,46 +76,36 @@ class LibraryActivity : AppCompatActivity() {
         b.libraryList.layoutManager = LinearLayoutManager(this)
         b.libraryList.adapter = adapter
 
-        // ✅ Set button click listeners OUTSIDE of collect { ... }
-        b.backupBtn.setOnClickListener {
-            // optional: quick debug toast
-            // Toast.makeText(this, "Backup clicked", Toast.LENGTH_SHORT).show()
-            exportLauncher.launch("MyHardboundsBackup.json")
-        }
-        b.restoreBtn.setOnClickListener {
-            // Toast.makeText(this, "Restore clicked", Toast.LENGTH_SHORT).show()
-            importLauncher.launch(arrayOf("application/json", "text/json"))
-        }
+        // Backup/Restore click listeners
+        b.backupBtn.setOnClickListener { exportLauncher.launch("MyHardboundsBackup.json") }
+        b.restoreBtn.setOnClickListener { importLauncher.launch(arrayOf("application/json", "text/json")) }
 
-        // Observe library (this suspends forever; keep it in its own coroutine)
+        // Observe full library; we keep latest list and filter in memory
         lifecycleScope.launch {
             dao.getAll().collect { list ->
-                adapter.submitList(list)
+                latestList = list
+                updateCounts(list)
+                applyFilters()
             }
         }
 
-        // Real-time search with debounce
+        // --- NEW: Read/Unread toggle ---
+        b.readToggle.setOnCheckedChangeListener { _, isChecked ->
+            showRead = isChecked
+            applyFilters()
+        }
+
+        // Real-time search with debounce (now filters in-memory)
         var searchJob: Job? = null
         b.searchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                val query = s?.toString()?.trim().orEmpty()
+                currentQuery = s?.toString()?.trim().orEmpty()
                 searchJob?.cancel()
-
-                if (query.isEmpty()) {
-                    // show full list via the Flow above
-                    b.emptyHint.visibility = View.GONE
-                    return
-                }
-
                 searchJob = lifecycleScope.launch {
                     delay(250)
-                    val results = withContext(Dispatchers.IO) { dao.search(query) }
-                    withContext(Dispatchers.Main) {
-                        adapter.submitList(results)
-                        b.emptyHint.visibility = if (results.isEmpty()) View.VISIBLE else View.GONE
-                    }
+                    applyFilters()
                 }
             }
         })
@@ -126,7 +117,32 @@ class LibraryActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateCounts(all: List<Book>) {
+        val total = all.size
+        val read = all.count { it.isRead }
+        val unread = total - read
+        b.countText.text = "Total: $total • Read: $read • Unread: $unread"
+    }
 
+    private fun applyFilters() {
+        var list = latestList
+
+        // 1) Read/Unread
+        list = if (showRead) list.filter { it.isRead } else list.filter { !it.isRead }
+
+        // 2) Search (title or authors)
+        if (currentQuery.isNotBlank()) {
+            val q = currentQuery.lowercase()
+            list = list.filter {
+                it.title.lowercase().contains(q) || it.authors.lowercase().contains(q)
+            }
+        }
+
+        adapter.submitList(list)
+        b.emptyHint.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    // (Optional) Dialog search you already had — unchanged
     private fun openSearchDialog() {
         val input = EditText(this).apply {
             hint = "Enter book title or author"
@@ -154,11 +170,8 @@ class LibraryActivity : AppCompatActivity() {
     private fun searchAndRoute(query: String) {
         lifecycleScope.launch {
             val results = withContext(Dispatchers.IO) { dao.search(query) }
-
             when {
-                results.isEmpty() -> {
-                    // same as before
-                }
+                results.isEmpty() -> { /* no-op or toast */ }
                 results.size == 1 -> {
                     val only = results.first()
                     startActivity(
@@ -167,7 +180,6 @@ class LibraryActivity : AppCompatActivity() {
                     )
                 }
                 else -> {
-                    // NEW: go to SearchResultsActivity instead of dialog
                     startActivity(
                         Intent(this@LibraryActivity, SearchResultsActivity::class.java)
                             .putExtra(SearchResultsActivity.EXTRA_QUERY, query)

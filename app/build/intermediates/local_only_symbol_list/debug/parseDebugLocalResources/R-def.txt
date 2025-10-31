@@ -20,6 +20,7 @@ id authorsInput
 id authorsText
 id backupBtn
 id cancelBtn
+id countText
 id cover
 id coverImage
 id deleteBtn
@@ -30,6 +31,7 @@ id fetchBtn
 id fetchByAuthorBtn
 id fetchStatus
 id header
+id headerRow
 id isbn
 id isbnInput
 id isbnText
@@ -41,6 +43,7 @@ id progress
 id publisherText
 id readStatusTag
 id readTag
+id readToggle
 id restoreBtn
 id resultsList
 id saveBtn
