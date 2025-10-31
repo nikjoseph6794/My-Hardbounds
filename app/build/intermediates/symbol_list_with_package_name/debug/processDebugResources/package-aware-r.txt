@@ -3118,6 +3118,7 @@ id actions
 id activity_chooser_view_content
 id add
 id addBtn
+id addManualBtn
 id addToWishlistBtn
 id addWishlistBtn
 id alertTitle
@@ -3133,6 +3134,7 @@ id asConfigured
 id async
 id authorText
 id authors
+id authorsInput
 id authorsText
 id auto
 id autoComplete
@@ -3147,6 +3149,7 @@ id blocking
 id bottom
 id bounce
 id buttonPanel
+id cancelBtn
 id cancel_button
 id center
 id centerCrop
@@ -3187,6 +3190,7 @@ id decor_content_parent
 id default_activity_button
 id deleteBtn
 id deltaRelative
+id descInput
 id descText
 id design_bottom_sheet
 id design_menu_item_action_area
@@ -3225,6 +3229,9 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id fetchBtn
+id fetchByAuthorBtn
+id fetchStatus
 id fill
 id fill_horizontal
 id fill_vertical
@@ -3265,6 +3272,7 @@ id info
 id invisible
 id inward
 id isbn
+id isbnInput
 id isbnText
 id italic
 id item_touch_helper_previous_elevation
@@ -3409,6 +3417,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id saveBtn
 id saveStatus
 id save_non_transition_alpha
 id save_overlay_view
@@ -3503,6 +3512,7 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
+id titleInput
 id titleText
 id title_template
 id toggle
@@ -3668,6 +3678,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_manual
 layout activity_book_detail
 layout activity_home
 layout activity_library

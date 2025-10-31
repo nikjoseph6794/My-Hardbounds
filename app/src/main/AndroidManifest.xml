@@ -16,6 +16,8 @@
         <activity android:name=".SearchResultsActivity" android:exported="false" />
         <activity android:name=".BookDetailActivity" android:exported="false" />
         <activity android:name=".WishlistActivity" android:exported="false" />
+        <activity android:name=".AddManualActivity" android:exported="false" />
+
 
         <activity android:name=".ScanActivity"
             android:exported="false" />

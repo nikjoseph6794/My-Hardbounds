@@ -75,6 +75,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp" />
+        <Button
+            android:id="@+id/addManualBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="➕  Add Book Manually"
+            android:layout_marginTop="16dp"
+            android:padding="16dp" />
+
 
     </LinearLayout>
 </ScrollView>

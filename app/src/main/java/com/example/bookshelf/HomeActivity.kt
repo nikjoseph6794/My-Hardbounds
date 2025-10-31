@@ -26,6 +26,10 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, WishlistActivity::class.java))
         }
 
+        b.addManualBtn.setOnClickListener {
+            startActivity(Intent(this, AddManualActivity::class.java))
+        }
+
 
     }
 }

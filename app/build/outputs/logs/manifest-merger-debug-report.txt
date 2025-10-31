@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:2:1-37:12
 MERGED from [androidx.databinding:viewbinding:8.6.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/94fd36156ff7b569e1a86e4e6a7d20fe/transformed/viewbinding-8.6.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5fa67af507e58d9dc2fc77953754b6f9/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [io.coil-kt:coil:2.6.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9e5d7d6f722748f6f2985cabab0f5d63/transformed/coil-2.6.0/AndroidManifest.xml:2:1-7:12
@@ -81,8 +81,8 @@ ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/Andro
 	android:name
 		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:6:22-64
 application
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-34:19
-INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-34:19
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-36:19
+INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-36:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5fa67af507e58d9dc2fc77953754b6f9/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5fa67af507e58d9dc2fc77953754b6f9/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/b99d643f251c8ee56f3524fb5124a6d0/transformed/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
@@ -137,36 +137,42 @@ ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/Andro
 		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:52-76
 	android:name
 		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:19-51
+activity#com.example.bookshelf.AddManualActivity
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:9-80
+	android:exported
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:53-77
+	android:name
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:19-52
 activity#com.example.bookshelf.ScanActivity
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:20:9-21:40
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-23:40
 	android:exported
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:21:13-37
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:13-37
 	android:name
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:20:19-47
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-47
 activity#com.example.bookshelf.LibraryActivity
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-78
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:9-78
 	android:exported
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:51-75
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:51-75
 	android:name
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-50
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:19-50
 activity#com.example.bookshelf.HomeActivity
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:9-31:20
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:9-33:20
 	android:exported
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:13-36
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-36
 	android:theme
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-61
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:13-61
 	android:name
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:13-41
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-30:29
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:13-32:29
 action#android.intent.action.MAIN
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:17-69
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:17-69
 	android:name
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:25-66
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:17-77
+ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:27-74
+		ADDED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:27-74
 uses-sdk
 INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml
