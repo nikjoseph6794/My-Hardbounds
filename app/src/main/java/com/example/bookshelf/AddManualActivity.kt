@@ -10,6 +10,7 @@ import com.example.bookshelf.data.RetrofitClient
 import com.example.bookshelf.databinding.ActivityAddManualBinding
 import com.example.bookshelf.db.AppDb
 import com.example.bookshelf.db.Book
+import com.example.bookshelf.db.WishlistEntry
 import com.example.bookshelf.util.openLibraryCoverForId
 import com.example.bookshelf.util.openLibraryCoverForIsbn
 import com.example.bookshelf.util.preferHttps
@@ -21,6 +22,7 @@ class AddManualActivity : AppCompatActivity() {
 
     private lateinit var b: ActivityAddManualBinding
     private val dao by lazy { AppDb.get(this).bookDao() }
+    private val wishlistDao by lazy { AppDb.get(this).wishlistDao() }
 
     // Used for the author search results list
     private data class Candidate(
@@ -35,14 +37,17 @@ class AddManualActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         b = ActivityAddManualBinding.inflate(layoutInflater)
         setContentView(b.root)
-        b.authorsInput.requestFocus()
 
+        // optional: focus the author field
+        // b.authorsInput.requestFocus()
 
-        b.fetchBtn.setOnClickListener { onFetchClicked() }            // Fetch by ISBN
-        b.saveBtn.setOnClickListener { onSaveClicked() }
+        // Buttons
+        b.fetchBtn.setOnClickListener { onFetchClicked() }            // hidden in UI (kept for future)
+        b.saveBtn.setOnClickListener { onSaveToLibraryClicked() }     // Save to Library
+        b.saveWishlistBtn?.setOnClickListener { onSaveToWishlistClicked() } // NEW: Save to Wishlist
         b.cancelBtn.setOnClickListener { finish() }
 
-        // Make sure your XML has a Button with id fetchByAuthorBtn
+        // Search by author
         b.fetchByAuthorBtn?.setOnClickListener { onFetchByAuthorClicked() }
     }
 
@@ -122,7 +127,7 @@ class AddManualActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val candidates = mutableListOf<Candidate>()
             try {
-                // 1) Google Books by author (we don't rely on industryIdentifiers here)
+                // 1) Google Books by author (no industryIdentifiers usage)
                 val gb = withContext(Dispatchers.IO) {
                     RetrofitClient.api.searchByIsbn("inauthor:$authorQuery")
                 }
@@ -131,8 +136,7 @@ class AddManualActivity : AppCompatActivity() {
                     val title = info?.title.orEmpty()
                     val authors = info?.authors?.joinToString().orEmpty()
                     val desc = info?.description.orEmpty()
-                    // We cannot read ISBN without industryIdentifiers in your model, so leave blank
-                    val isbn = ""
+                    val isbn = "" // not extracting from identifiers in your model
                     val cover = preferHttps(info?.imageLinks?.thumbnail)
                         .ifBlank { preferHttps(info?.imageLinks?.smallThumbnail) }
 
@@ -202,8 +206,8 @@ class AddManualActivity : AppCompatActivity() {
             .show()
     }
 
-    // --- Save ---
-    private fun onSaveClicked() {
+    // --- Save to LIBRARY (existing) ---
+    private fun onSaveToLibraryClicked() {
         val raw = b.isbnInput.text.toString().trim()
         val isbn = normalizeIsbn(raw)
         val title = b.titleInput.text.toString().trim()
@@ -229,6 +233,9 @@ class AddManualActivity : AppCompatActivity() {
                 return@launch
             }
 
+            // If present in wishlist, remove (optional)
+            wishlistDao.deleteByIsbn(isbn)
+
             dao.upsert(
                 Book(
                     isbn = isbn,
@@ -242,6 +249,59 @@ class AddManualActivity : AppCompatActivity() {
             )
             withContext(Dispatchers.Main) {
                 Toast.makeText(this@AddManualActivity, "Saved to library ✔", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
+    }
+
+    // --- NEW: Save to WISHLIST ---
+    private fun onSaveToWishlistClicked() {
+        val raw = b.isbnInput.text.toString().trim()
+        val isbn = normalizeIsbn(raw)
+        val title = b.titleInput.text.toString().trim()
+        val authors = b.authorsInput.text.toString().trim()
+        val desc = b.descInput.text.toString().trim()
+        val cover = (b.saveBtn.tag as? String).orEmpty()
+
+        // Wishlist uses isbn as PK → require valid ISBN
+        if (!isValidIsbn(isbn)) {
+            Toast.makeText(this, "Enter a valid ISBN to add to wishlist", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (title.isEmpty() && authors.isEmpty()) {
+            Toast.makeText(this, "Enter at least Title or Author", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            // If already in library → don't add to wishlist
+            val inLibrary = dao.findByIsbn(isbn) != null
+            if (inLibrary) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@AddManualActivity, "Already in library", Toast.LENGTH_SHORT).show()
+                }
+                return@launch
+            }
+
+            val inWishlist = wishlistDao.findByIsbn(isbn) != null
+            if (inWishlist) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@AddManualActivity, "Already in wishlist", Toast.LENGTH_SHORT).show()
+                }
+                return@launch
+            }
+
+            wishlistDao.upsert(
+                WishlistEntry(
+                    isbn = isbn,
+                    title = title,
+                    authors = authors,
+                    description = desc,
+                    coverUrl = cover
+                )
+            )
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@AddManualActivity, "Added to wishlist ♡", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }

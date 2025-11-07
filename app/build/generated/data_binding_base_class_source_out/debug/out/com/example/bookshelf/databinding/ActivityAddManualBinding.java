@@ -46,12 +46,15 @@ public final class ActivityAddManualBinding implements ViewBinding {
   public final Button saveBtn;
 
   @NonNull
+  public final Button saveWishlistBtn;
+
+  @NonNull
   public final EditText titleInput;
 
   private ActivityAddManualBinding(@NonNull ScrollView rootView, @NonNull EditText authorsInput,
       @NonNull Button cancelBtn, @NonNull EditText descInput, @NonNull Button fetchBtn,
       @NonNull Button fetchByAuthorBtn, @NonNull TextView fetchStatus, @NonNull EditText isbnInput,
-      @NonNull Button saveBtn, @NonNull EditText titleInput) {
+      @NonNull Button saveBtn, @NonNull Button saveWishlistBtn, @NonNull EditText titleInput) {
     this.rootView = rootView;
     this.authorsInput = authorsInput;
     this.cancelBtn = cancelBtn;
@@ -61,6 +64,7 @@ public final class ActivityAddManualBinding implements ViewBinding {
     this.fetchStatus = fetchStatus;
     this.isbnInput = isbnInput;
     this.saveBtn = saveBtn;
+    this.saveWishlistBtn = saveWishlistBtn;
     this.titleInput = titleInput;
   }
 
@@ -139,6 +143,12 @@ public final class ActivityAddManualBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.saveWishlistBtn;
+      Button saveWishlistBtn = ViewBindings.findChildViewById(rootView, id);
+      if (saveWishlistBtn == null) {
+        break missingId;
+      }
+
       id = R.id.titleInput;
       EditText titleInput = ViewBindings.findChildViewById(rootView, id);
       if (titleInput == null) {
@@ -146,7 +156,7 @@ public final class ActivityAddManualBinding implements ViewBinding {
       }
 
       return new ActivityAddManualBinding((ScrollView) rootView, authorsInput, cancelBtn, descInput,
-          fetchBtn, fetchByAuthorBtn, fetchStatus, isbnInput, saveBtn, titleInput);
+          fetchBtn, fetchByAuthorBtn, fetchStatus, isbnInput, saveBtn, saveWishlistBtn, titleInput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
