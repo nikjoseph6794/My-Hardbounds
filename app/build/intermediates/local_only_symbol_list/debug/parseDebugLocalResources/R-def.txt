@@ -48,6 +48,7 @@ id restoreBtn
 id resultsList
 id saveBtn
 id saveStatus
+id saveWishlistBtn
 id scanAgainBtn
 id scanBtn
 id searchInput
