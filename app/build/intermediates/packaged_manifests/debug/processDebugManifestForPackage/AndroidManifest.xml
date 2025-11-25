@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bookshelf"
+    package="com.bookshlef.bookshelf"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -17,10 +17,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
-        android:name="com.example.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-permission android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -52,25 +52,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar" >
         <activity
-            android:name="com.example.bookshelf.SearchResultsActivity"
+            android:name="com.bookshlef.bookshelf.SearchResultsActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.BookDetailActivity"
+            android:name="com.bookshlef.bookshelf.BookDetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.WishlistActivity"
+            android:name="com.bookshlef.bookshelf.WishlistActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.AddManualActivity"
+            android:name="com.bookshlef.bookshelf.AddManualActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.ScanActivity"
+            android:name="com.bookshlef.bookshelf.ScanActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.LibraryActivity"
+            android:name="com.bookshlef.bookshelf.LibraryActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bookshelf.HomeActivity"
+            android:name="com.bookshlef.bookshelf.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.MyHardbounds.Splash" >
             <intent-filter>
@@ -82,7 +82,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.bookshelf.androidx-startup"
+            android:authorities="com.bookshlef.bookshelf.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.bookshelf.app-mergeDebugResources-34:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-34:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/d16bf72fbe70a97efe5eccb15740346b/transformed/core-splashscreen-1.0.1/res/values-watch-v20/values-watch-v20.xml",

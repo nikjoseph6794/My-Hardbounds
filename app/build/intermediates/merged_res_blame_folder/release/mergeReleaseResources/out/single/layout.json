@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_main.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_search_results.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_search_results.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_home.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_library.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_library.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_book_detail.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_book_detail.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_wishlist.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_wishlist.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_add_manual.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_add_manual.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/item_book.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/item_book.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeReleaseResources-35:/layout/activity_scan.xml",
+        "source": "com.bookshlef.bookshelf.app-main-37:/layout/activity_scan.xml"
+    }
+]
