@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.bookshelf"
+3    package="com.bookshlef.bookshelf"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -25,12 +25,12 @@
 18
 19    <permission
 19-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
-20        android:name="com.example.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+20        android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 20-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 21        android:protectionLevel="signature" />
 21-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 22
-23    <uses-permission android:name="com.example.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+23    <uses-permission android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
 23-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 23-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 24    <uses-feature
@@ -90,45 +90,45 @@
 53        android:theme="@style/Theme.Material3.DayNight.NoActionBar" >
 53-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:15:9-68
 54        <activity
-54-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:9-84
-55            android:name="com.example.bookshelf.SearchResultsActivity"
-55-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:19-56
+54-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:9-107
+55            android:name="com.bookshlef.bookshelf.SearchResultsActivity"
+55-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:19-79
 56            android:exported="false" />
-56-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:57-81
+56-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:80-104
 57        <activity
-57-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:9-81
-58            android:name="com.example.bookshelf.BookDetailActivity"
-58-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:19-53
+57-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:9-104
+58            android:name="com.bookshlef.bookshelf.BookDetailActivity"
+58-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:19-76
 59            android:exported="false" />
-59-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:54-78
+59-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:77-101
 60        <activity
-60-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:9-79
-61            android:name="com.example.bookshelf.WishlistActivity"
-61-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:19-51
+60-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:9-102
+61            android:name="com.bookshlef.bookshelf.WishlistActivity"
+61-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:19-74
 62            android:exported="false" />
-62-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:52-76
+62-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:75-99
 63        <activity
-63-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:9-80
-64            android:name="com.example.bookshelf.AddManualActivity"
-64-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:19-52
+63-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:9-103
+64            android:name="com.bookshlef.bookshelf.AddManualActivity"
+64-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:19-75
 65            android:exported="false" />
-65-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:53-77
+65-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:76-100
 66        <activity
 66-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-23:40
-67            android:name="com.example.bookshelf.ScanActivity"
-67-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-47
+67            android:name="com.bookshlef.bookshelf.ScanActivity"
+67-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-70
 68            android:exported="false" />
 68-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:13-37
 69        <activity
-69-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:9-78
-70            android:name="com.example.bookshelf.LibraryActivity"
-70-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:19-50
+69-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:9-101
+70            android:name="com.bookshlef.bookshelf.LibraryActivity"
+70-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:19-73
 71            android:exported="false" />
-71-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:51-75
+71-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:74-98
 72        <activity
 72-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:9-33:20
-73            android:name="com.example.bookshelf.HomeActivity"
-73-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-41
+73            android:name="com.bookshlef.bookshelf.HomeActivity"
+73-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-64
 74            android:exported="true"
 74-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-36
 75            android:theme="@style/Theme.MyHardbounds.Splash" >
@@ -149,7 +149,7 @@
 83-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
 84            android:name="androidx.startup.InitializationProvider"
 84-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
-85            android:authorities="com.example.bookshelf.androidx-startup"
+85            android:authorities="com.bookshlef.bookshelf.androidx-startup"
 85-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
 86            android:exported="false" >
 86-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37

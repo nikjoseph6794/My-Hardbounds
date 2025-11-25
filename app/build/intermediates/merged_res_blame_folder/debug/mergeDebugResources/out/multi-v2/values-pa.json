@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.bookshelf.app-mergeDebugResources-34:/values-pa/values-pa.xml",
+            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-34:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/res/values-pa/values-pa.xml",

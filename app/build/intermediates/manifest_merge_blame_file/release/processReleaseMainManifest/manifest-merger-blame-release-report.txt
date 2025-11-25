@@ -1,0 +1,238 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bookshlef.bookshelf"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:4:5-65
+11-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:4:22-62
+12
+13    <uses-feature
+13-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:5:5-88
+14        android:name="android.hardware.camera.any"
+14-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:5:19-61
+15        android:required="false" />
+15-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:5:62-86
+16
+17    <uses-permission android:name="android.permission.INTERNET" />
+17-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:6:5-67
+17-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:6:22-64
+18
+19    <permission
+19-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+20        android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+20-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+21        android:protectionLevel="signature" />
+21-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+22
+23    <uses-permission android:name="com.bookshlef.bookshelf.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+23-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+23-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+24    <uses-feature
+24-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
+25        android:name="android.hardware.camera"
+25-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:26:9-47
+26        android:required="false" />
+26-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:27:9-33
+27    <uses-feature
+27-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+28        android:name="android.hardware.camera.front"
+28-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+29        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+29-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+30    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+31    <uses-feature
+31-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+32        android:name="android.hardware.camera.autofocus"
+32-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+33        android:required="false" />
+33-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+34    <uses-feature
+34-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+35        android:name="android.hardware.camera.flash"
+35-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+36        android:required="false" />
+36-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+37    <uses-feature
+37-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+38        android:name="android.hardware.screen.landscape"
+38-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+39        android:required="false" />
+39-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+40    <uses-feature
+40-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+41        android:name="android.hardware.wifi"
+41-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+42        android:required="false" />
+42-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+43
+44    <application
+44-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:9:5-36:19
+45        android:allowBackup="true"
+45-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:12:9-35
+46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+46-->[androidx.core:core:1.13.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/2ef7af5a2acd4052d71e4cab80ac1d16/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+47        android:extractNativeLibs="false"
+48        android:icon="@mipmap/ic_launcher"
+48-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:10:9-43
+49        android:label="My BookShelf"
+49-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:13:9-37
+50        android:roundIcon="@mipmap/ic_launcher_round"
+50-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:11:9-54
+51        android:supportsRtl="true"
+51-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:14:9-35
+52        android:theme="@style/Theme.Material3.DayNight.NoActionBar" >
+52-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:15:9-68
+53        <activity
+53-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:9-107
+54            android:name="com.bookshlef.bookshelf.SearchResultsActivity"
+54-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:19-79
+55            android:exported="false" />
+55-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:16:80-104
+56        <activity
+56-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:9-104
+57            android:name="com.bookshlef.bookshelf.BookDetailActivity"
+57-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:19-76
+58            android:exported="false" />
+58-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:17:77-101
+59        <activity
+59-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:9-102
+60            android:name="com.bookshlef.bookshelf.WishlistActivity"
+60-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:19-74
+61            android:exported="false" />
+61-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:18:75-99
+62        <activity
+62-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:9-103
+63            android:name="com.bookshlef.bookshelf.AddManualActivity"
+63-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:19-75
+64            android:exported="false" />
+64-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:19:76-100
+65        <activity
+65-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:9-23:40
+66            android:name="com.bookshlef.bookshelf.ScanActivity"
+66-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:22:19-70
+67            android:exported="false" />
+67-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:23:13-37
+68        <activity
+68-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:9-101
+69            android:name="com.bookshlef.bookshelf.LibraryActivity"
+69-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:19-73
+70            android:exported="false" />
+70-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:24:74-98
+71        <activity
+71-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:25:9-33:20
+72            android:name="com.bookshlef.bookshelf.HomeActivity"
+72-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:26:13-64
+73            android:exported="true"
+73-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:27:13-36
+74            android:theme="@style/Theme.MyHardbounds.Splash" >
+74-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:28:13-61
+75            <intent-filter>
+75-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:29:13-32:29
+76                <action android:name="android.intent.action.MAIN" />
+76-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:17-69
+76-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:30:25-66
+77
+78                <category android:name="android.intent.category.LAUNCHER" />
+78-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:17-77
+78-->/Users/A-201145/Downloads/BookShelf-PathA-emulator/app/src/main/AndroidManifest.xml:31:27-74
+79            </intent-filter>
+80        </activity>
+81
+82        <provider
+82-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+83            android:name="androidx.startup.InitializationProvider"
+83-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+84            android:authorities="com.bookshlef.bookshelf.androidx-startup"
+84-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+85            android:exported="false" >
+85-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+86            <meta-data
+86-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+87                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+87-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+88                android:value="androidx.startup" />
+88-->[androidx.emoji2:emoji2:1.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/8e92b47bd426a1123ec1c1bec93882dd/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+89            <meta-data
+89-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+90                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+90-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+91                android:value="androidx.startup" />
+91-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/3aa42072d1e434843b7578267e0ceaa6/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+92            <meta-data
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+94                android:value="androidx.startup" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+95        </provider>
+96
+97        <service
+97-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:24:9-28:63
+98            android:name="androidx.room.MultiInstanceInvalidationService"
+98-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:25:13-74
+99            android:directBootAware="true"
+99-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:26:13-43
+100            android:exported="false" />
+100-->[androidx.room:room-runtime-android:2.8.3] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/9030ac75adf334a02538646c29b081bb/transformed/room-runtime/AndroidManifest.xml:27:13-37
+101
+102        <receiver
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+103            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+104            android:directBootAware="false"
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+105            android:enabled="true"
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+106            android:exported="true"
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+107            android:permission="android.permission.DUMP" >
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+108            <intent-filter>
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+109                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+110            </intent-filter>
+111            <intent-filter>
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+112                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+113            </intent-filter>
+114            <intent-filter>
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+115                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+116            </intent-filter>
+117            <intent-filter>
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+118                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/f59e1d698d98cc73fdb7869701098c02/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+119            </intent-filter>
+120        </receiver>
+121
+122        <activity
+122-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+123            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+123-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+124            android:clearTaskOnLaunch="true"
+124-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+125            android:screenOrientation="sensorLandscape"
+125-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+126            android:stateNotNeeded="true"
+126-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+127            android:theme="@style/zxing_CaptureTheme"
+127-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+128            android:windowSoftInputMode="stateAlwaysHidden" />
+128-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+129    </application>
+130
+131</manifest>

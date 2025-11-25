@@ -13,17 +13,17 @@
         android:label="My BookShelf"
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
-        <activity android:name=".SearchResultsActivity" android:exported="false" />
-        <activity android:name=".BookDetailActivity" android:exported="false" />
-        <activity android:name=".WishlistActivity" android:exported="false" />
-        <activity android:name=".AddManualActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.SearchResultsActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.BookDetailActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.WishlistActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.AddManualActivity" android:exported="false" />
 
 
-        <activity android:name=".ScanActivity"
+        <activity android:name="com.bookshlef.bookshelf.ScanActivity"
             android:exported="false" />
-        <activity android:name=".LibraryActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.LibraryActivity" android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.bookshlef.bookshelf.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.MyHardbounds.Splash">
             <intent-filter>
