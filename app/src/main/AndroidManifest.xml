@@ -17,6 +17,7 @@
         <activity android:name="com.bookshlef.bookshelf.BookDetailActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.WishlistActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.AddManualActivity" android:exported="false" />
+        <activity android:name=".ScanHistoryActivity" />
 
 
         <activity android:name="com.bookshlef.bookshelf.ScanActivity"

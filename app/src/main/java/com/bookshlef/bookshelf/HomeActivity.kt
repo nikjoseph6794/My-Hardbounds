@@ -29,7 +29,9 @@ class HomeActivity : AppCompatActivity() {
         b.addManualBtn.setOnClickListener {
             startActivity(Intent(this, AddManualActivity::class.java))
         }
-
+        b.historyBtn.setOnClickListener {
+            startActivity(Intent(this, ScanHistoryActivity::class.java))
+        }
 
     }
 }

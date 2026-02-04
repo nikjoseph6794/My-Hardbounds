@@ -3118,6 +3118,7 @@ id actions
 id activity_chooser_view_content
 id add
 id addBtn
+id addLibraryBtn
 id addManualBtn
 id addToWishlistBtn
 id addWishlistBtn
@@ -3260,6 +3261,8 @@ id headerRow
 id header_title
 id hide_ime_id
 id hideable
+id historyBtn
+id historyList
 id home
 id homeAsUp
 id honorRequest
@@ -3688,6 +3691,7 @@ layout activity_home
 layout activity_library
 layout activity_main
 layout activity_scan
+layout activity_scan_history
 layout activity_search_results
 layout activity_wishlist
 layout custom_dialog
@@ -3709,6 +3713,7 @@ layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_book
+layout item_scan_history
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

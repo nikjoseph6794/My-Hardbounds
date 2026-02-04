@@ -30,6 +30,8 @@ public final class AppDb_Impl extends AppDb {
 
   private volatile WishlistDao _wishlistDao;
 
+  private volatile ScanHistoryDao _scanHistoryDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
@@ -38,14 +40,16 @@ public final class AppDb_Impl extends AppDb {
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `books` (`isbn` TEXT NOT NULL, `title` TEXT NOT NULL, `authors` TEXT NOT NULL, `description` TEXT NOT NULL, `addedAt` INTEGER NOT NULL, `isRead` INTEGER NOT NULL, `coverUrl` TEXT NOT NULL, PRIMARY KEY(`isbn`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `wishlist` (`isbn` TEXT NOT NULL, `title` TEXT NOT NULL, `authors` TEXT NOT NULL, `description` TEXT NOT NULL, `coverUrl` TEXT NOT NULL, `addedAt` INTEGER NOT NULL, PRIMARY KEY(`isbn`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `scan_history` (`isbn` TEXT NOT NULL, `title` TEXT NOT NULL, `authors` TEXT NOT NULL, `description` TEXT NOT NULL, `coverUrl` TEXT NOT NULL, `scannedAt` INTEGER NOT NULL, PRIMARY KEY(`isbn`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '94fe3022406121bfd024f03049b483c1')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1d186169d95ca44bb754138149a00411')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS `books`");
         db.execSQL("DROP TABLE IF EXISTS `wishlist`");
+        db.execSQL("DROP TABLE IF EXISTS `scan_history`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -122,9 +126,25 @@ public final class AppDb_Impl extends AppDb {
                   + " Expected:\n" + _infoWishlist + "\n"
                   + " Found:\n" + _existingWishlist);
         }
+        final HashMap<String, TableInfo.Column> _columnsScanHistory = new HashMap<String, TableInfo.Column>(6);
+        _columnsScanHistory.put("isbn", new TableInfo.Column("isbn", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsScanHistory.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsScanHistory.put("authors", new TableInfo.Column("authors", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsScanHistory.put("description", new TableInfo.Column("description", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsScanHistory.put("coverUrl", new TableInfo.Column("coverUrl", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsScanHistory.put("scannedAt", new TableInfo.Column("scannedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysScanHistory = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesScanHistory = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoScanHistory = new TableInfo("scan_history", _columnsScanHistory, _foreignKeysScanHistory, _indicesScanHistory);
+        final TableInfo _existingScanHistory = TableInfo.read(db, "scan_history");
+        if (!_infoScanHistory.equals(_existingScanHistory)) {
+          return new RoomOpenHelper.ValidationResult(false, "scan_history(com.bookshlef.bookshelf.db.ScanHistoryEntry).\n"
+                  + " Expected:\n" + _infoScanHistory + "\n"
+                  + " Found:\n" + _existingScanHistory);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "94fe3022406121bfd024f03049b483c1", "1c49888fdfaf6ec622074f0d3458550a");
+    }, "1d186169d95ca44bb754138149a00411", "47a1bb3aa57e98758e9e44ded4f5f4c6");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -135,7 +155,7 @@ public final class AppDb_Impl extends AppDb {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "books","wishlist");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "books","wishlist","scan_history");
   }
 
   @Override
@@ -146,6 +166,7 @@ public final class AppDb_Impl extends AppDb {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `books`");
       _db.execSQL("DELETE FROM `wishlist`");
+      _db.execSQL("DELETE FROM `scan_history`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -162,6 +183,7 @@ public final class AppDb_Impl extends AppDb {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(BookDao.class, BookDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(WishlistDao.class, WishlistDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(ScanHistoryDao.class, ScanHistoryDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -204,6 +226,20 @@ public final class AppDb_Impl extends AppDb {
           _wishlistDao = new WishlistDao_Impl(this);
         }
         return _wishlistDao;
+      }
+    }
+  }
+
+  @Override
+  public ScanHistoryDao scanHistoryDao() {
+    if (_scanHistoryDao != null) {
+      return _scanHistoryDao;
+    } else {
+      synchronized(this) {
+        if(_scanHistoryDao == null) {
+          _scanHistoryDao = new ScanHistoryDao_Impl(this);
+        }
+        return _scanHistoryDao;
       }
     }
   }

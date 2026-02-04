@@ -34,5 +34,13 @@
     {
         "merged": "com.bookshlef.bookshelf.app-mergeDebugResources-35:/layout/activity_book_detail.xml",
         "source": "com.bookshlef.bookshelf.app-main-38:/layout/activity_book_detail.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeDebugResources-35:/layout/item_scan_history.xml",
+        "source": "com.bookshlef.bookshelf.app-main-38:/layout/item_scan_history.xml"
+    },
+    {
+        "merged": "com.bookshlef.bookshelf.app-mergeDebugResources-35:/layout/activity_scan_history.xml",
+        "source": "com.bookshlef.bookshelf.app-main-38:/layout/activity_scan_history.xml"
     }
 ]
