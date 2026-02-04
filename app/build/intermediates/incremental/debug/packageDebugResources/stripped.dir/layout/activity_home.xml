@@ -82,6 +82,13 @@
             android:text="➕  Add Book Manually"
             android:layout_marginTop="16dp"
             android:padding="16dp" />
+        <Button
+            android:id="@+id/historyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🕘 Scan History"
+            android:layout_marginTop="12dp" />
+
 
 
     </LinearLayout>

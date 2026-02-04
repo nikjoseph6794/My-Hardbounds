@@ -6,13 +6,17 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
-    entities = [Book::class, WishlistEntry::class],
+    entities = [Book::class, WishlistEntry::class,ScanHistoryEntry::class
+    ],
     version = 4,
     exportSchema = false
 )
 abstract class AppDb : RoomDatabase() {
     abstract fun bookDao(): BookDao
     abstract fun wishlistDao(): WishlistDao
+    abstract fun scanHistoryDao(): ScanHistoryDao
+
+
 
     companion object {
         private val MIGRATION_1_2 = object : Migration(1, 2) {

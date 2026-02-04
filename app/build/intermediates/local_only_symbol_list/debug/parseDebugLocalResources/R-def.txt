@@ -9,6 +9,7 @@ drawable bookshelf_logo_splash123
 drawable ic_book_placeholder
 drawable ic_book_placeholder_1
 id addBtn
+id addLibraryBtn
 id addManualBtn
 id addToWishlistBtn
 id addWishlistBtn
@@ -32,6 +33,8 @@ id fetchByAuthorBtn
 id fetchStatus
 id header
 id headerRow
+id historyBtn
+id historyList
 id isbn
 id isbnInput
 id isbnText
@@ -65,9 +68,11 @@ layout activity_home
 layout activity_library
 layout activity_main
 layout activity_scan
+layout activity_scan_history
 layout activity_search_results
 layout activity_wishlist
 layout item_book
+layout item_scan_history
 mipmap ic_book_placeholder
 mipmap ic_book_placeholder_foreground
 mipmap ic_book_placeholder_round

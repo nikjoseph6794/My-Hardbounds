@@ -31,6 +31,9 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final TextView appTitle;
 
   @NonNull
+  public final Button historyBtn;
+
+  @NonNull
   public final Button libraryBtn;
 
   @NonNull
@@ -43,12 +46,14 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final Button wishlistBtn;
 
   private ActivityHomeBinding(@NonNull ScrollView rootView, @NonNull Button addManualBtn,
-      @NonNull TextView appSubtitle, @NonNull TextView appTitle, @NonNull Button libraryBtn,
-      @NonNull ImageView logoImage, @NonNull Button scanBtn, @NonNull Button wishlistBtn) {
+      @NonNull TextView appSubtitle, @NonNull TextView appTitle, @NonNull Button historyBtn,
+      @NonNull Button libraryBtn, @NonNull ImageView logoImage, @NonNull Button scanBtn,
+      @NonNull Button wishlistBtn) {
     this.rootView = rootView;
     this.addManualBtn = addManualBtn;
     this.appSubtitle = appSubtitle;
     this.appTitle = appTitle;
+    this.historyBtn = historyBtn;
     this.libraryBtn = libraryBtn;
     this.logoImage = logoImage;
     this.scanBtn = scanBtn;
@@ -100,6 +105,12 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.historyBtn;
+      Button historyBtn = ViewBindings.findChildViewById(rootView, id);
+      if (historyBtn == null) {
+        break missingId;
+      }
+
       id = R.id.libraryBtn;
       Button libraryBtn = ViewBindings.findChildViewById(rootView, id);
       if (libraryBtn == null) {
@@ -125,7 +136,7 @@ public final class ActivityHomeBinding implements ViewBinding {
       }
 
       return new ActivityHomeBinding((ScrollView) rootView, addManualBtn, appSubtitle, appTitle,
-          libraryBtn, logoImage, scanBtn, wishlistBtn);
+          historyBtn, libraryBtn, logoImage, scanBtn, wishlistBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
