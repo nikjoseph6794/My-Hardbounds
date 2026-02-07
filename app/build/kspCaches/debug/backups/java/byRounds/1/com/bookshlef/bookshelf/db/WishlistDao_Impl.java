@@ -191,6 +191,50 @@ public final class WishlistDao_Impl implements WishlistDao {
   }
 
   @Override
+  public Object getAllOnce(final Continuation<? super List<WishlistEntry>> $completion) {
+    final String _sql = "SELECT * FROM wishlist";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<WishlistEntry>>() {
+      @Override
+      @NonNull
+      public List<WishlistEntry> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfIsbn = CursorUtil.getColumnIndexOrThrow(_cursor, "isbn");
+          final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
+          final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
+          final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
+          final List<WishlistEntry> _result = new ArrayList<WishlistEntry>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final WishlistEntry _item;
+            final String _tmpIsbn;
+            _tmpIsbn = _cursor.getString(_cursorIndexOfIsbn);
+            final String _tmpTitle;
+            _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            final String _tmpAuthors;
+            _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
+            final String _tmpDescription;
+            _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new WishlistEntry(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpAddedAt);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
   public Object findByIsbn(final String isbn,
       final Continuation<? super WishlistEntry> $completion) {
     final String _sql = "SELECT * FROM wishlist WHERE isbn = ? LIMIT 1";

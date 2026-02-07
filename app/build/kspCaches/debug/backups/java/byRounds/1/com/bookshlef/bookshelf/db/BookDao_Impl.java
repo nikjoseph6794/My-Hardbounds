@@ -47,7 +47,7 @@ public final class BookDao_Impl implements BookDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `books` (`isbn`,`title`,`authors`,`description`,`addedAt`,`isRead`,`coverUrl`) VALUES (?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `books` (`isbn`,`title`,`authors`,`description`,`coverUrl`,`isRead`,`addedAt`) VALUES (?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -57,10 +57,10 @@ public final class BookDao_Impl implements BookDao {
         statement.bindString(2, entity.getTitle());
         statement.bindString(3, entity.getAuthors());
         statement.bindString(4, entity.getDescription());
-        statement.bindLong(5, entity.getAddedAt());
+        statement.bindString(5, entity.getCoverUrl());
         final int _tmp = entity.isRead() ? 1 : 0;
         statement.bindLong(6, _tmp);
-        statement.bindString(7, entity.getCoverUrl());
+        statement.bindLong(7, entity.getAddedAt());
       }
     };
     this.__deletionAdapterOfBook = new EntityDeletionOrUpdateAdapter<Book>(__db) {
@@ -185,6 +185,55 @@ public final class BookDao_Impl implements BookDao {
   }
 
   @Override
+  public Object getAllOnce(final Continuation<? super List<Book>> $completion) {
+    final String _sql = "SELECT * FROM books ORDER BY addedAt DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<Book>>() {
+      @Override
+      @NonNull
+      public List<Book> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfIsbn = CursorUtil.getColumnIndexOrThrow(_cursor, "isbn");
+          final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
+          final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
+          final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
+          final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Book _item;
+            final String _tmpIsbn;
+            _tmpIsbn = _cursor.getString(_cursorIndexOfIsbn);
+            final String _tmpTitle;
+            _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            final String _tmpAuthors;
+            _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
+            final String _tmpDescription;
+            _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
+            final boolean _tmpIsRead;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsRead);
+            _tmpIsRead = _tmp != 0;
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
   public Flow<List<Book>> getAll() {
     final String _sql = "SELECT * FROM books ORDER BY addedAt DESC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
@@ -198,9 +247,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Book _item;
@@ -212,15 +261,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
             _result.add(_item);
           }
           return _result;
@@ -251,9 +300,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Book _item;
@@ -265,15 +314,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
             _result.add(_item);
           }
           return _result;
@@ -302,9 +351,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final Book _result;
           if (_cursor.moveToFirst()) {
             final String _tmpIsbn;
@@ -315,15 +364,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _result = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _result = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
           } else {
             _result = null;
           }
@@ -360,9 +409,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Book _item;
@@ -374,15 +423,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
             _result.add(_item);
           }
           return _result;
@@ -408,9 +457,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Book _item;
@@ -422,15 +471,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
             _result.add(_item);
           }
           return _result;
@@ -460,9 +509,9 @@ public final class BookDao_Impl implements BookDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfAuthors = CursorUtil.getColumnIndexOrThrow(_cursor, "authors");
           final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
-          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
-          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
           final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "coverUrl");
+          final int _cursorIndexOfIsRead = CursorUtil.getColumnIndexOrThrow(_cursor, "isRead");
+          final int _cursorIndexOfAddedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "addedAt");
           final List<Book> _result = new ArrayList<Book>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Book _item;
@@ -474,15 +523,15 @@ public final class BookDao_Impl implements BookDao {
             _tmpAuthors = _cursor.getString(_cursorIndexOfAuthors);
             final String _tmpDescription;
             _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
-            final long _tmpAddedAt;
-            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            final String _tmpCoverUrl;
+            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
             final boolean _tmpIsRead;
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsRead);
             _tmpIsRead = _tmp != 0;
-            final String _tmpCoverUrl;
-            _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
-            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpAddedAt,_tmpIsRead,_tmpCoverUrl);
+            final long _tmpAddedAt;
+            _tmpAddedAt = _cursor.getLong(_cursorIndexOfAddedAt);
+            _item = new Book(_tmpIsbn,_tmpTitle,_tmpAuthors,_tmpDescription,_tmpCoverUrl,_tmpIsRead,_tmpAddedAt);
             _result.add(_item);
           }
           return _result;

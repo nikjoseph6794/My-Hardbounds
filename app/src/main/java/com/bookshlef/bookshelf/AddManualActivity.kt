@@ -14,6 +14,7 @@ import com.bookshlef.bookshelf.db.WishlistEntry
 import com.bookshlef.bookshelf.util.openLibraryCoverForId
 import com.bookshlef.bookshelf.util.openLibraryCoverForIsbn
 import com.bookshlef.bookshelf.util.preferHttps
+import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -235,6 +236,7 @@ class AddManualActivity : AppCompatActivity() {
 
             // If present in wishlist, remove (optional)
             wishlistDao.deleteByIsbn(isbn)
+            FirebaseSyncHelper.removeWishlist(isbn)
 
             dao.upsert(
                 Book(

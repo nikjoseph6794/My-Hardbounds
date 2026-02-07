@@ -10,6 +10,10 @@ interface BookDao {
     suspend fun upsert(book: Book)
 
     @Query("SELECT * FROM books ORDER BY addedAt DESC")
+    suspend fun getAllOnce(): List<Book>
+
+
+    @Query("SELECT * FROM books ORDER BY addedAt DESC")
     fun getAll(): Flow<List<Book>>
 
     @Query("SELECT * FROM books ORDER BY addedAt DESC")

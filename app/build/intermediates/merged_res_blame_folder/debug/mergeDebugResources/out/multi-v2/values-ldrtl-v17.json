@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-34:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-46:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5fa67af507e58d9dc2fc77953754b6f9/transformed/material-1.12.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/1f103b4515b56cb5135ed7bde7e4a0a6/transformed/material-1.12.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

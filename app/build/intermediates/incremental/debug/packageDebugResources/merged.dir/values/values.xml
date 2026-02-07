@@ -3,6 +3,12 @@
     <color name="ic_book_placeholder_background">#1C072A</color>
     <color name="ic_launcher_background">#050505</color>
     <color name="splash_background">#FFFFFF</color>
+    <string name="gcm_defaultSenderId" translatable="false">444151590614</string>
+    <string name="google_api_key" translatable="false">AIzaSyCzgBXohQGdA5sGugf7LVceLgbnDIruxG8</string>
+    <string name="google_app_id" translatable="false">1:444151590614:android:f4a35a484f89cc9149a377</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCzgBXohQGdA5sGugf7LVceLgbnDIruxG8</string>
+    <string name="google_storage_bucket" translatable="false">my-bookshelf-4132e.firebasestorage.app</string>
+    <string name="project_id" translatable="false">my-bookshelf-4132e</string>
     <style name="Theme.MyHardbounds" parent="Theme.Material3.DayNight.NoActionBar"/>
     <style name="Theme.MyHardbounds.Splash" parent="Theme.SplashScreen">
         

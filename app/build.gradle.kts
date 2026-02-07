@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.google.devtools.ksp") version "2.0.20-1.0.24"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -12,8 +13,8 @@ android {
         applicationId = "com.bookshlef.bookshelf"
         minSdk = 23
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.2"
+        versionCode = 4
+        versionName = "1.4"
     }
 
     buildFeatures {
@@ -56,7 +57,13 @@ dependencies {
     implementation("io.coil-kt:coil:2.6.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
+
     ksp("androidx.room:room-compiler:2.6.1")
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
 
 
 }

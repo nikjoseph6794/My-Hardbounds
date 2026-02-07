@@ -12,6 +12,7 @@ import com.bookshlef.bookshelf.databinding.ActivityBookDetailBinding
 import com.bookshlef.bookshelf.db.AppDb
 import com.bookshlef.bookshelf.db.WishlistEntry
 import com.bookshlef.bookshelf.R
+import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -125,11 +126,16 @@ class BookDetailActivity : AppCompatActivity() {
                     .setPositiveButton("Delete") { _, _ ->
                         lifecycleScope.launch(Dispatchers.IO) {
                             dao.delete(book)
+
+                            // ☁️ Remove from cloud
+                            FirebaseSyncHelper.removeBook(book.isbn)
+
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(this@BookDetailActivity, "Deleted", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
                         }
+
                     }
                     .setNegativeButton("Cancel", null)
                     .show()

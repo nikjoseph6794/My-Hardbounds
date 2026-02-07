@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-34:/values-v28/values-v28.xml",
+            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-46:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5fa67af507e58d9dc2fc77953754b6f9/transformed/material-1.12.0/res/values-v28/values-v28.xml",
+                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/1f103b4515b56cb5135ed7bde7e4a0a6/transformed/material-1.12.0/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/5cb946decdf7fa271f3bd227be40f93d/transformed/appcompat-1.7.0/res/values-v28/values-v28.xml",
+                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/facd9ba76ceadfc290b6359df6e57543/transformed/appcompat-1.7.0/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

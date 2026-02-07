@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="300dp"> <!-- increase/decrease to taste (e.g., 24dp, 56dp) -->
+    <bitmap
+        android:src="@drawable/bookshelf_logo"
+        android:gravity="center" />
+</inset>

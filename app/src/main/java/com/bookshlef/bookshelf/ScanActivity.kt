@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bookshlef.bookshelf.databinding.ActivityScanBinding
 import com.bookshlef.bookshelf.data.RetrofitClient
 import com.bookshlef.bookshelf.db.*
+import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.coroutines.*
 
@@ -68,22 +69,26 @@ class ScanActivity : AppCompatActivity() {
             val isbn = currentIsbn ?: return@setOnClickListener
 
             uiScope.launch(Dispatchers.IO) {
-                wishlistDao.upsert(
-                    WishlistEntry(
-                        isbn,
-                        currentTitle.orEmpty(),
-                        currentAuthors.orEmpty(),
-                        currentDesc.orEmpty(),
-                        currentCoverUrl.orEmpty()
-                    )
+                val entry = WishlistEntry(
+                    isbn = isbn,
+                    title = currentTitle.orEmpty(),
+                    authors = currentAuthors.orEmpty(),
+                    description = currentDesc.orEmpty(),
+                    coverUrl = currentCoverUrl.orEmpty()
                 )
-                historyDao.deleteByIsbn(isbn)   // ✅ remove from history
+
+                // 1️⃣ Save locally
+                wishlistDao.upsert(entry)
+
+                // 2️⃣ Sync to cloud
+                FirebaseSyncHelper.addWishlist(entry)
 
                 withContext(Dispatchers.Main) {
                     b.saveStatus.text = "Added to wishlist ✔"
                     b.addWishlistBtn.visibility = View.GONE
                 }
             }
+
         }
 
         // ➕ Add to Library
@@ -91,20 +96,26 @@ class ScanActivity : AppCompatActivity() {
             val isbn = currentIsbn ?: return@setOnClickListener
 
             uiScope.launch(Dispatchers.IO) {
-                dao.upsert(
-                    Book(
-                        isbn,
-                        currentTitle.orEmpty(),
-                        currentAuthors.orEmpty(),
-                        currentDesc.orEmpty(),
-                        System.currentTimeMillis(),
-                        false,
-                        currentCoverUrl.orEmpty()
-                    )
+                val book = Book(
+                    isbn = isbn,
+                    title = currentTitle.orEmpty(),
+                    authors = currentAuthors.orEmpty(),
+                    description = currentDesc.orEmpty(),
+                    coverUrl = currentCoverUrl.orEmpty(),
+                    isRead = false,
+                    addedAt = System.currentTimeMillis()
                 )
 
+                // 1️⃣ Save locally
+                dao.upsert(book)
+
+                // 2️⃣ Remove from wishlist locally
                 wishlistDao.deleteByIsbn(isbn)
-                historyDao.deleteByIsbn(isbn)   // ✅ remove from history
+                FirebaseSyncHelper.removeWishlist(isbn)
+
+                // 3️⃣ Sync to cloud
+                FirebaseSyncHelper.addBook(book)
+                FirebaseSyncHelper.removeWishlist(isbn)
 
                 withContext(Dispatchers.Main) {
                     b.saveStatus.text = "Saved to library ✔"
@@ -112,6 +123,7 @@ class ScanActivity : AppCompatActivity() {
                     b.addWishlistBtn.visibility = View.GONE
                 }
             }
+
         }
 
         requestPermissionAndScan()

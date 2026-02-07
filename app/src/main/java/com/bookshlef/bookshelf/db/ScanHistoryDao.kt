@@ -6,11 +6,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Insert
 import androidx.room.Delete
 import androidx.room.Query
-
+import com.bookshlef.bookshelf.db.ScanHistoryEntry
 
 
 @Dao
 interface ScanHistoryDao {
+
+    @Query("SELECT * FROM books ORDER BY addedAt DESC")
+    suspend fun getAllOnce(): List<Book>
 
     @Query("SELECT * FROM scan_history ORDER BY scannedAt DESC")
     fun getAll(): Flow<List<ScanHistoryEntry>>

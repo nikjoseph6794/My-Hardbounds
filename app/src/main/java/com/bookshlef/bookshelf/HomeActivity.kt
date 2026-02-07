@@ -5,6 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bookshlef.bookshelf.databinding.ActivityHomeBinding
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import com.bookshlef.bookshelf.db.AppDb
+import com.bookshlef.bookshelf.utils.FirebaseMigrationHelper
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var b: ActivityHomeBinding
@@ -12,6 +16,15 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            FirebaseMigrationHelper.migrateIfNeeded(
+                context = this@HomeActivity,
+                bookDao = AppDb.get(this@HomeActivity).bookDao(),
+                wishlistDao = AppDb.get(this@HomeActivity).wishlistDao()
+            )
+        }
+
         b = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(b.root)
 

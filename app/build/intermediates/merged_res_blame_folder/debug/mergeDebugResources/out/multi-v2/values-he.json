@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-34:/values-he/values-he.xml",
+            "outputFile": "com.bookshlef.bookshelf.app-mergeDebugResources-46:/values-he/values-he.xml",
             "map": [
                 {
-                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/922ba32105b8e955bce85c6c7b6fa333/transformed/zxing-android-embedded-4.3.0/res/values-he/values-he.xml",
+                    "source": "/Users/A-201145/.gradle/caches/9.0-milestone-1/transforms/adca248cee6ab835731052f5f8eb1892/transformed/zxing-android-embedded-4.3.0/res/values-he/values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
