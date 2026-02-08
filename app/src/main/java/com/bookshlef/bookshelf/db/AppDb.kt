@@ -11,9 +11,10 @@ import androidx.room.RoomDatabase
         WishlistEntry::class,
         ScanHistoryEntry::class
     ],
-    version = 3, // ⬅️ INCREMENT THIS
+    version = 4,   // ✅ MUST MATCH OLD VERSION
     exportSchema = false
 )
+
 abstract class AppDb : RoomDatabase() {
 
     abstract fun bookDao(): BookDao
@@ -30,9 +31,10 @@ abstract class AppDb : RoomDatabase() {
                     AppDb::class.java,
                     "bookshelf.db"
                 )
-                    .fallbackToDestructiveMigration() // ✅ DEV SAFE
+                    // ❌ DO NOT use fallbackToDestructiveMigration during migration
                     .build()
                     .also { INSTANCE = it }
             }
+
     }
 }
