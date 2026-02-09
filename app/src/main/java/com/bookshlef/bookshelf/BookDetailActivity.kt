@@ -11,8 +11,8 @@ import coil.load
 import com.bookshlef.bookshelf.databinding.ActivityBookDetailBinding
 import com.bookshlef.bookshelf.db.AppDb
 import com.bookshlef.bookshelf.db.WishlistEntry
-import com.bookshlef.bookshelf.R
-import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
+import com.bookshlef.bookshelf.util.FirebaseSyncHelper
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

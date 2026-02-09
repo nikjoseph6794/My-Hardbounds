@@ -9,13 +9,4 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCzgBXohQGdA5sGugf7LVceLgbnDIruxG8</string>
     <string name="google_storage_bucket" translatable="false">my-bookshelf-4132e.firebasestorage.app</string>
     <string name="project_id" translatable="false">my-bookshelf-4132e</string>
-    <style name="Theme.MyHardbounds" parent="Theme.Material3.DayNight.NoActionBar"/>
-    <style name="Theme.MyHardbounds.Splash" parent="Theme.SplashScreen">
-        
-        <item name="windowSplashScreenBackground">@color/splash_background</item>
-        
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        
-        <item name="postSplashScreenTheme">@style/Theme.MyHardbounds</item>
-    </style>
 </resources>

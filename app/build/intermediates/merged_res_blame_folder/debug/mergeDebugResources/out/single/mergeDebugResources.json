@@ -120,6 +120,10 @@
         "source": "com.bookshlef.bookshelf.app-main-50:/mipmap-xhdpi/ic_book_placeholder_foreground.webp"
     },
     {
+        "merged": "com.bookshlef.bookshelf.app-debug-48:/drawable_splash_background.xml.flat",
+        "source": "com.bookshlef.bookshelf.app-main-50:/drawable/splash_background.xml"
+    },
+    {
         "merged": "com.bookshlef.bookshelf.app-debug-48:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
         "source": "com.bookshlef.bookshelf.app-main-50:/mipmap-xhdpi/ic_launcher_foreground.webp"
     },

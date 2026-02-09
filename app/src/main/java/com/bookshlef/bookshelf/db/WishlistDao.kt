@@ -5,6 +5,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WishlistDao {
 
+    @Query("SELECT * FROM books")
+    suspend fun getAllNow(): List<WishlistEntry>
+
+
+
     @Query("SELECT * FROM wishlist ORDER BY addedAt DESC")
     fun getAll(): Flow<List<WishlistEntry>>
 

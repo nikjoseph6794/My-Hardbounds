@@ -31,10 +31,13 @@ abstract class AppDb : RoomDatabase() {
                     AppDb::class.java,
                     "bookshelf.db"
                 )
-                    // ❌ DO NOT use fallbackToDestructiveMigration during migration
+                    // ❌ DO NOT use fallbackToDestructiveMigration for migration builds
                     .build()
                     .also { INSTANCE = it }
             }
+
+
+
 
     }
 }

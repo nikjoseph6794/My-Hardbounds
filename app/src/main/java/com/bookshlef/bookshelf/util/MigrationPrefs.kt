@@ -1,23 +1,20 @@
-package com.bookshlef.bookshelf.utils
+package com.bookshlef.bookshelf.util
 
 import android.content.Context
 
 object MigrationPrefs {
 
-    private const val PREF_NAME = "migration_prefs"
-    private const val KEY_MIGRATED = "firebase_migrated"
+    private const val PREF = "migration_prefs"
+    private const val KEY_DONE = "firebase_migration_done"
 
-    fun isMigrated(context: Context): Boolean {
-        return context
-            .getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-            .getBoolean(KEY_MIGRATED, false)
-    }
+    fun isDone(context: Context): Boolean =
+        context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
+            .getBoolean(KEY_DONE, false)
 
-    fun setMigrated(context: Context) {
-        context
-            .getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    fun markDone(context: Context) {
+        context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
             .edit()
-            .putBoolean(KEY_MIGRATED, true)
+            .putBoolean(KEY_DONE, true)
             .apply()
     }
 }

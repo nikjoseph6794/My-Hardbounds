@@ -8,6 +8,7 @@ drawable bookshelf_logo
 drawable bookshelf_logo_splash123
 drawable ic_book_placeholder
 drawable ic_book_placeholder_1
+drawable splash_background
 id addBtn
 id addLibraryBtn
 id addManualBtn
@@ -83,5 +84,3 @@ string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
 string project_id
-style Theme.MyHardbounds
-style Theme.MyHardbounds.Splash

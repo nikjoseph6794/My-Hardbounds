@@ -9,6 +9,8 @@ interface BookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(book: Book)
 
+
+
     @Query("SELECT * FROM books ORDER BY addedAt DESC")
     suspend fun getAllOnce(): List<Book>
 

@@ -5,34 +5,33 @@
     <uses-feature android:name="android.hardware.camera.any" android:required="false"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:allowBackup="true"
         android:label="My BookShelf"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
         <activity android:name="com.bookshlef.bookshelf.SearchResultsActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.BookDetailActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.WishlistActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.AddManualActivity" android:exported="false" />
-        <activity android:name=".ScanHistoryActivity" />
-
-
-        <activity android:name="com.bookshlef.bookshelf.ScanActivity"
-            android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.ScanHistoryActivity" android:exported="false" />
+        <activity android:name="com.bookshlef.bookshelf.ScanActivity" android:exported="false" />
         <activity android:name="com.bookshlef.bookshelf.LibraryActivity" android:exported="false" />
+
+        <!-- MAIN ENTRY -->
         <activity
             android:name="com.bookshlef.bookshelf.HomeActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyHardbounds.Splash">
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
+        </activity>
 
     </application>
 </manifest>

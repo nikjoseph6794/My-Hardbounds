@@ -11,10 +11,10 @@ import com.bookshlef.bookshelf.databinding.ActivityAddManualBinding
 import com.bookshlef.bookshelf.db.AppDb
 import com.bookshlef.bookshelf.db.Book
 import com.bookshlef.bookshelf.db.WishlistEntry
+import com.bookshlef.bookshelf.util.FirebaseSyncHelper
 import com.bookshlef.bookshelf.util.openLibraryCoverForId
 import com.bookshlef.bookshelf.util.openLibraryCoverForIsbn
 import com.bookshlef.bookshelf.util.preferHttps
-import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

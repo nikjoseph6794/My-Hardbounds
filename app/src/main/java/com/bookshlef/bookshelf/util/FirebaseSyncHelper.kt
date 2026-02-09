@@ -1,4 +1,4 @@
-package com.bookshlef.bookshelf.utils
+package com.bookshlef.bookshelf.util
 
 import com.bookshlef.bookshelf.db.Book
 import com.bookshlef.bookshelf.db.WishlistEntry
@@ -11,15 +11,52 @@ object FirebaseSyncHelper {
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
-    private suspend fun userId(): String {
-        val user = auth.currentUser ?: auth.signInAnonymously().await().user!!
-        return user.uid
+    // 🔐 Ensure user is signed in (anonymous)
+    private suspend fun ensureUser(): String {
+        val current = auth.currentUser
+        if (current != null) return current.uid
+
+        val result = auth.signInAnonymously().await()
+        return result.user!!.uid
     }
 
-    /* ---------- LIBRARY ---------- */
+    // 📚 Sync full library (used during migration)
+    suspend fun syncLibrary(books: List<Book>) {
+        val uid = ensureUser()
+        val batch = db.batch()
 
+        books.forEach { book ->
+            val ref = db.collection("users")
+                .document(uid)
+                .collection("library")
+                .document(book.isbn)
+
+            batch.set(ref, book)
+        }
+
+        batch.commit().await()
+    }
+
+    // 📝 Sync full wishlist
+    suspend fun syncWishlist(wishlist: List<WishlistEntry>) {
+        val uid = ensureUser()
+        val batch = db.batch()
+
+        wishlist.forEach { w ->
+            val ref = db.collection("users")
+                .document(uid)
+                .collection("wishlist")
+                .document(w.isbn)
+
+            batch.set(ref, w)
+        }
+
+        batch.commit().await()
+    }
+
+    // ➕ Add single book
     suspend fun addBook(book: Book) {
-        val uid = userId()
+        val uid = ensureUser()
         db.collection("users")
             .document(uid)
             .collection("library")
@@ -28,8 +65,9 @@ object FirebaseSyncHelper {
             .await()
     }
 
+    // ❌ Remove book
     suspend fun removeBook(isbn: String) {
-        val uid = userId()
+        val uid = ensureUser()
         db.collection("users")
             .document(uid)
             .collection("library")
@@ -38,10 +76,9 @@ object FirebaseSyncHelper {
             .await()
     }
 
-    /* ---------- WISHLIST ---------- */
-
+    // ➕ Add wishlist item
     suspend fun addWishlist(entry: WishlistEntry) {
-        val uid = userId()
+        val uid = ensureUser()
         db.collection("users")
             .document(uid)
             .collection("wishlist")
@@ -50,8 +87,9 @@ object FirebaseSyncHelper {
             .await()
     }
 
+    // ❌ Remove wishlist item
     suspend fun removeWishlist(isbn: String) {
-        val uid = userId()
+        val uid = ensureUser()
         db.collection("users")
             .document(uid)
             .collection("wishlist")

@@ -57,7 +57,8 @@
         android:label="My BookShelf"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight.NoActionBar" >
+        android:testOnly="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
         <activity
             android:name="com.bookshlef.bookshelf.SearchResultsActivity"
             android:exported="false" />
@@ -70,17 +71,20 @@
         <activity
             android:name="com.bookshlef.bookshelf.AddManualActivity"
             android:exported="false" />
-        <activity android:name="com.bookshlef.bookshelf.ScanHistoryActivity" />
+        <activity
+            android:name="com.bookshlef.bookshelf.ScanHistoryActivity"
+            android:exported="false" />
         <activity
             android:name="com.bookshlef.bookshelf.ScanActivity"
             android:exported="false" />
         <activity
             android:name="com.bookshlef.bookshelf.LibraryActivity"
             android:exported="false" />
+
+        <!-- MAIN ENTRY -->
         <activity
             android:name="com.bookshlef.bookshelf.HomeActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyHardbounds.Splash" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

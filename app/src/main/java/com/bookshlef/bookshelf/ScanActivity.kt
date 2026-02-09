@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bookshlef.bookshelf.databinding.ActivityScanBinding
 import com.bookshlef.bookshelf.data.RetrofitClient
 import com.bookshlef.bookshelf.db.*
-import com.bookshlef.bookshelf.utils.FirebaseSyncHelper
+import com.bookshlef.bookshelf.util.FirebaseSyncHelper
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.coroutines.*
 
