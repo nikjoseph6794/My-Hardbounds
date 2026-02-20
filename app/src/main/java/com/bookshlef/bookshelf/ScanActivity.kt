@@ -68,7 +68,7 @@ class ScanActivity : AppCompatActivity() {
             val isbn = currentIsbn ?: return@setOnClickListener
 
             uiScope.launch(Dispatchers.IO) {
-                wishlistDao.upsert(
+                com.bookshlef.bookshelf.data.BookRepository.addToWishlist(
                     WishlistEntry(
                         isbn,
                         currentTitle.orEmpty(),
@@ -91,7 +91,7 @@ class ScanActivity : AppCompatActivity() {
             val isbn = currentIsbn ?: return@setOnClickListener
 
             uiScope.launch(Dispatchers.IO) {
-                dao.upsert(
+                com.bookshlef.bookshelf.data.BookRepository.addBook(
                     Book(
                         isbn,
                         currentTitle.orEmpty(),
@@ -103,7 +103,7 @@ class ScanActivity : AppCompatActivity() {
                     )
                 )
 
-                wishlistDao.deleteByIsbn(isbn)
+                com.bookshlef.bookshelf.data.BookRepository.removeFromWishlistByIsbn(isbn)
                 historyDao.deleteByIsbn(isbn)   // ✅ remove from history
 
                 withContext(Dispatchers.Main) {

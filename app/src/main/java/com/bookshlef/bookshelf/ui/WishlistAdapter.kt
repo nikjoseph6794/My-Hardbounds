@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bookshlef.bookshelf.databinding.ItemBookBinding
 import com.bookshlef.bookshelf.db.WishlistEntry
+import coil.load
 
 class WishlistAdapter(
     private val onLongPress: (WishlistEntry) -> Unit
@@ -33,6 +34,16 @@ class WishlistAdapter(
             b.title.text = item.title.ifBlank { "—" }
             b.authors.text = item.authors.ifBlank { "—" }
             b.isbn.text = "ISBN: ${item.isbn}"
+            
+            // Cover
+            if (item.coverUrl.isNotBlank()) {
+                b.coverImage.load(item.coverUrl) {
+                     placeholder(com.bookshlef.bookshelf.R.drawable.ic_book_placeholder)
+                     error(com.bookshlef.bookshelf.R.drawable.ic_book_placeholder)
+                }
+            } else {
+                 b.coverImage.load(com.bookshlef.bookshelf.R.drawable.ic_book_placeholder)
+            }
 
 
         }

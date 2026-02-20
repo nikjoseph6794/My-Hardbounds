@@ -39,33 +39,7 @@ class LibraryActivity : AppCompatActivity() {
     private var currentQuery: String = ""
     private var showRead: Boolean = false  // false = Unread (default), true = Read
 
-    // For creating a new backup JSON file
-    private val exportLauncher = registerForActivityResult(
-        ActivityResultContracts.CreateDocument("application/json")
-    ) { uri ->
-        if (uri != null) {
-            lifecycleScope.launch {
-                BackupHelper.exportToUri(this@LibraryActivity, uri)
-                Toast.makeText(this@LibraryActivity, "✅ Backup saved successfully!", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            Toast.makeText(this@LibraryActivity, "Backup canceled", Toast.LENGTH_SHORT).show()
-        }
-    }
 
-    // For restoring from an existing backup file
-    private val importLauncher = registerForActivityResult(
-        ActivityResultContracts.OpenDocument()
-    ) { uri ->
-        if (uri != null) {
-            lifecycleScope.launch {
-                val count = BackupHelper.importFromUri(this@LibraryActivity, uri)
-                Toast.makeText(this@LibraryActivity, "✅ Restored $count books!", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            Toast.makeText(this@LibraryActivity, "Restore canceled", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,9 +50,7 @@ class LibraryActivity : AppCompatActivity() {
         b.libraryList.layoutManager = LinearLayoutManager(this)
         b.libraryList.adapter = adapter
 
-        // Backup/Restore click listeners
-        b.backupBtn.setOnClickListener { exportLauncher.launch("MyHardboundsBackup.json") }
-        b.restoreBtn.setOnClickListener { importLauncher.launch(arrayOf("application/json", "text/json")) }
+
 
         // Observe full library; we keep latest list and filter in memory
         lifecycleScope.launch {

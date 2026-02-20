@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bookshlef.bookshelf.R
 import com.bookshlef.bookshelf.databinding.ItemBookBinding
 import com.bookshlef.bookshelf.db.Book
+import coil.load
 
 // NEW: pass an onClick callback from the Activity
 class BookAdapter(
@@ -41,6 +42,16 @@ class BookAdapter(
             b.title.text = item.title.ifBlank { "—" }
             b.authors.text = if (item.authors.isBlank()) "—" else item.authors
             b.isbn.text = "ISBN: ${item.isbn}"
+            
+            // Cover
+            if (item.coverUrl.isNotBlank()) {
+                b.coverImage.load(item.coverUrl) {
+                     placeholder(R.drawable.ic_book_placeholder)
+                     error(R.drawable.ic_book_placeholder)
+                }
+            } else {
+                 b.coverImage.load(R.drawable.ic_book_placeholder)
+            }
 
             // --- Rounded Read/Unread Tag ---
             val ctx = b.root.context

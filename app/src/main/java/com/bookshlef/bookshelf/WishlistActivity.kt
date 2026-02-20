@@ -21,7 +21,7 @@ class WishlistActivity : AppCompatActivity() {
                 .setMessage("Remove “${item.title.ifBlank { item.isbn }}” from your wishlist?")
                 .setPositiveButton("Remove") { _, _ ->
                     lifecycleScope.launch {
-                        AppDb.get(this@WishlistActivity).wishlistDao().deleteByIsbn(item.isbn)
+                        com.bookshlef.bookshelf.data.BookRepository.removeFromWishlistByIsbn(item.isbn)
                     }
                 }
                 .setNegativeButton("Cancel", null)

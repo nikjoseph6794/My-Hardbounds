@@ -38,21 +38,7 @@ android:layout_height="wrap_content" />
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/backupBtn"
-        android:text="☁️ Create Backup"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="14dp" />
 
-    <Button
-        android:id="@+id/restoreBtn"
-        android:text="⬇️ Restore from Backup"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="14dp" />
 
     <!-- Add this block near the top, before the list -->
     <LinearLayout

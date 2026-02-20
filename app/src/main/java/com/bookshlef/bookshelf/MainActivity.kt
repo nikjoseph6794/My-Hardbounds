@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             val desc = lastDescription.orEmpty()
 
             lifecycleScope.launch(Dispatchers.IO) {
-                dao.upsert(
+                com.bookshlef.bookshelf.data.BookRepository.addBook(
                     Book(
                         isbn = isbn,
                         title = title,

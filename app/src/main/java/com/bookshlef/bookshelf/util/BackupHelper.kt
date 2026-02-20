@@ -44,7 +44,7 @@ object BackupHelper {
         }
 
         for (b in books) {
-            dao.upsert(b)
+            com.bookshlef.bookshelf.data.BookRepository.addBook(b)
         }
         books.size
     }

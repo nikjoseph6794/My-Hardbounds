@@ -12,6 +12,9 @@ interface WishlistDao {
     @Query("SELECT * FROM wishlist ORDER BY addedAt DESC")
     fun getAll(): Flow<List<WishlistEntry>>
 
+    @Query("SELECT * FROM wishlist ORDER BY addedAt DESC")
+    suspend fun getAllNow(): List<WishlistEntry>
+
     @Query("SELECT * FROM wishlist WHERE isbn = :isbn LIMIT 1")
     suspend fun findByIsbn(isbn: String): WishlistEntry?
 

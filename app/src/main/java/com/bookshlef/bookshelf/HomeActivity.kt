@@ -12,6 +12,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        
+        com.bookshlef.bookshelf.data.BookRepository.init(this)
+        com.bookshlef.bookshelf.data.BookRepository.startSync()
+
         b = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(b.root)
 

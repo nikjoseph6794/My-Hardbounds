@@ -78,7 +78,7 @@ class BookDetailActivity : AppCompatActivity() {
                 b.addToWishlistBtn.visibility = if (alreadyInWishlist) View.GONE else View.VISIBLE
                 b.addToWishlistBtn.setOnClickListener {
                     lifecycleScope.launch(Dispatchers.IO) {
-                        wishlistDao.upsert(
+                        com.bookshlef.bookshelf.data.BookRepository.addToWishlist(
                             WishlistEntry(
                                 isbn = book.isbn,
                                 title = book.title,
@@ -104,7 +104,7 @@ class BookDetailActivity : AppCompatActivity() {
             b.toggleReadBtn.setOnClickListener {
                 val newValue = !isReadNow
                 lifecycleScope.launch(Dispatchers.IO) {
-                    dao.setRead(book.isbn, newValue)
+                    com.bookshlef.bookshelf.data.BookRepository.updateReadStatus(book.isbn, newValue)
                     withContext(Dispatchers.Main) {
                         isReadNow = newValue
                         renderReadStatus(isReadNow)
@@ -124,7 +124,7 @@ class BookDetailActivity : AppCompatActivity() {
                     .setMessage("Remove “${book.title.ifBlank { "Untitled" }}” from your library?")
                     .setPositiveButton("Delete") { _, _ ->
                         lifecycleScope.launch(Dispatchers.IO) {
-                            dao.delete(book)
+                            com.bookshlef.bookshelf.data.BookRepository.removeBook(book)
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(this@BookDetailActivity, "Deleted", Toast.LENGTH_SHORT).show()
                                 finish()

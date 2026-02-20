@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
     id("com.google.devtools.ksp") version "2.0.20-1.0.24"
 }
 
@@ -12,12 +13,29 @@ android {
         applicationId = "com.bookshlef.bookshelf"
         minSdk = 23
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.2"
+        versionCode = 5
+        versionName = "1.5"
     }
 
     buildFeatures {
         viewBinding = true
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("/Users/A-201145/Documents/Playstore/PlaystoreKey.jks")
+            storePassword = "Nikbook@1"
+            keyAlias = "playstorekey"
+            keyPassword = "Nikbook@1"
+        }
+    }
+
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
 
     compileOptions {
@@ -56,7 +74,14 @@ dependencies {
     implementation("io.coil-kt:coil:2.6.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
+
     ksp("androidx.room:room-compiler:2.6.1")
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
 
 
 }
