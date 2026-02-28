@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.bookshlef.bookshelf.db.AppDb
 import com.bookshlef.bookshelf.db.Book
+import com.bookshlef.bookshelf.db.ScanHistoryEntry
 import com.bookshlef.bookshelf.db.WishlistEntry
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentChange
@@ -81,6 +82,27 @@ object BookRepository {
                     }
                 }
             }
+
+        // Sync Scan History
+        firestore.collection("users").document(uid).collection("history")
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) return@addSnapshotListener
+                
+                scope.launch {
+                    val dao = db?.scanHistoryDao() ?: return@launch
+                    snapshots?.documentChanges?.forEach { change ->
+                        val item = change.document.toObject(ScanHistoryEntry::class.java)
+                        when (change.type) {
+                            DocumentChange.Type.ADDED, DocumentChange.Type.MODIFIED -> {
+                                dao.upsert(item)
+                            }
+                            DocumentChange.Type.REMOVED -> {
+                                dao.deleteByIsbn(item.isbn)
+                            }
+                        }
+                    }
+                }
+            }
     }
 
     suspend fun addBook(book: Book) {
@@ -123,6 +145,20 @@ object BookRepository {
         db?.wishlistDao()?.deleteByIsbn(isbn)
         val uid = getUid() ?: return
         firestore.collection("users").document(uid).collection("wishlist")
+            .document(isbn).delete()
+    }
+
+    suspend fun addScanHistory(entry: ScanHistoryEntry) {
+        db?.scanHistoryDao()?.upsert(entry)
+        val uid = getUid() ?: return
+        firestore.collection("users").document(uid).collection("history")
+            .document(entry.isbn).set(entry)
+    }
+
+    suspend fun removeScanHistoryByIsbn(isbn: String) {
+        db?.scanHistoryDao()?.deleteByIsbn(isbn)
+        val uid = getUid() ?: return
+        firestore.collection("users").document(uid).collection("history")
             .document(isbn).delete()
     }
 

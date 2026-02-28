@@ -234,9 +234,9 @@ class AddManualActivity : AppCompatActivity() {
             }
 
             // If present in wishlist, remove (optional)
-            wishlistDao.deleteByIsbn(isbn)
+            com.bookshlef.bookshelf.data.BookRepository.removeFromWishlistByIsbn(isbn)
 
-            dao.upsert(
+            com.bookshlef.bookshelf.data.BookRepository.addBook(
                 Book(
                     isbn = isbn,
                     title = title,
@@ -291,7 +291,7 @@ class AddManualActivity : AppCompatActivity() {
                 return@launch
             }
 
-            wishlistDao.upsert(
+            com.bookshlef.bookshelf.data.BookRepository.addToWishlist(
                 WishlistEntry(
                     isbn = isbn,
                     title = title,

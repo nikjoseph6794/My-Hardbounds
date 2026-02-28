@@ -47,6 +47,16 @@ object MigrationManager {
                     }
                 }
 
+                // 3. Migrate Scan History
+                val history = db.scanHistoryDao().getAllNow()
+                if (history.isNotEmpty()) {
+                    val historyRef = firestore.collection("users").document(userId).collection("history")
+                    history.forEach { item ->
+                        val docRef = historyRef.document(item.isbn)
+                        batch.set(docRef, item)
+                    }
+                }
+
                 // Commit the batch
                 batch.commit().await()
 

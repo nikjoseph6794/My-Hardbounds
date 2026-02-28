@@ -77,7 +77,7 @@ class ScanActivity : AppCompatActivity() {
                         currentCoverUrl.orEmpty()
                     )
                 )
-                historyDao.deleteByIsbn(isbn)   // ✅ remove from history
+                com.bookshlef.bookshelf.data.BookRepository.removeScanHistoryByIsbn(isbn)   // ✅ remove from history
 
                 withContext(Dispatchers.Main) {
                     b.saveStatus.text = "Added to wishlist ✔"
@@ -104,7 +104,7 @@ class ScanActivity : AppCompatActivity() {
                 )
 
                 com.bookshlef.bookshelf.data.BookRepository.removeFromWishlistByIsbn(isbn)
-                historyDao.deleteByIsbn(isbn)   // ✅ remove from history
+                com.bookshlef.bookshelf.data.BookRepository.removeScanHistoryByIsbn(isbn)   // ✅ remove from history
 
                 withContext(Dispatchers.Main) {
                     b.saveStatus.text = "Saved to library ✔"
@@ -210,7 +210,7 @@ class ScanActivity : AppCompatActivity() {
 
         // ✅ Only save if not already tracked elsewhere
         if (!inLibrary && !inWishlist) {
-            historyDao.upsert(
+            com.bookshlef.bookshelf.data.BookRepository.addScanHistory(
                 ScanHistoryEntry(
                     isbn = isbn,
                     title = title,

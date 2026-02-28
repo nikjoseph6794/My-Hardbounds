@@ -11,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId = "com.bookshlef.bookshelf"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 35
-        versionCode = 8
-        versionName = "1.8"
+        versionCode = 10
+        versionName = "1.10"
     }
 
     buildFeatures {

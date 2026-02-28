@@ -38,7 +38,7 @@ class ScanHistoryActivity : AppCompatActivity() {
                             addedAt = System.currentTimeMillis()
                         )
                     )
-                    historyDao.deleteByIsbn(entry.isbn)
+                    com.bookshlef.bookshelf.data.BookRepository.removeScanHistoryByIsbn(entry.isbn)
                 }
             },
             onAddWishlist = { entry ->
@@ -52,12 +52,12 @@ class ScanHistoryActivity : AppCompatActivity() {
                             coverUrl = entry.coverUrl
                         )
                     )
-                    historyDao.deleteByIsbn(entry.isbn)
+                    com.bookshlef.bookshelf.data.BookRepository.removeScanHistoryByIsbn(entry.isbn)
                 }
             },
             onDelete = { entry ->
                 lifecycleScope.launch(Dispatchers.IO) {
-                    historyDao.delete(entry)
+                    com.bookshlef.bookshelf.data.BookRepository.removeScanHistoryByIsbn(entry.isbn)
                 }
             }
         )

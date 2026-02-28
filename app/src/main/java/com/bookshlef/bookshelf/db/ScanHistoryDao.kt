@@ -15,6 +15,9 @@ interface ScanHistoryDao {
     @Query("SELECT * FROM scan_history ORDER BY scannedAt DESC")
     fun getAll(): Flow<List<ScanHistoryEntry>>
 
+    @Query("SELECT * FROM scan_history ORDER BY scannedAt DESC")
+    suspend fun getAllNow(): List<ScanHistoryEntry>
+
     @Query("SELECT * FROM scan_history WHERE isbn = :isbn LIMIT 1")
     suspend fun findByIsbn(isbn: String): ScanHistoryEntry?
 
